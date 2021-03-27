@@ -5,8 +5,8 @@ The purpose of this Linux project is to read data from the cdc.gov website and d
 The Updater:
 	updater.cpp contains an updateData function that pulls the new data.xml
 	The new data file comes from https://data.cdc.gov/Case-Surveillance/United-States-COVID-19-Cases-and-Deaths-by-State-o/9mfq-cb36/data
-	there is also a test file to test the updateData function, run "make updater_TEST" to build it
+	there is also a test file to test the updateData function, run "make updater_TEST" to build it and "make clean_updater_TEST" to clean the output
 
 The Graph:
 	graph.cpp contains a function to print the given data into a scatter plot graph
-	there is also a test file to test the graph, run "make graph_TEST" to build it
+	there is also a test file to test the graph, run "make graph_TEST" to build it and "make clean_graph_TEST" to clean the output

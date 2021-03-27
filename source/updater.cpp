@@ -15,8 +15,7 @@ struct MemoryStruct
 
 
 //Write Memory Callback qrites to memory and calculates the real size of the data
-static size_t 
-WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void *userp)
+inline static size_t WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void *userp)
 {
 	size_t realsize = size*nmemb;
 	struct MemoryStruct *mem = (struct MemoryStruct *)userp;
@@ -38,7 +37,7 @@ WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void *userp)
 
 
 
-int updateData(void)
+inline int updateData(void)
 {
 	//set curl dependant variables
 	CURL *curl;
