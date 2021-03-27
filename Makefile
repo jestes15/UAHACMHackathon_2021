@@ -1,7 +1,7 @@
-SOURCE_FILES = curltest.cpp 
+SOURCE_FILES = updater.cpp 
 HEADER_FILES = 
 
-OUT	= curl_test
+OUT	= update 
 CC	 = g++
 FLAGS	 =
 LFLAGS   = -lcurl
