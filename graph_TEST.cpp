@@ -1,8 +1,8 @@
 #include "graph.cpp"
-#include <math.h>
 
 int main(void)
 {
+	
 	int testArray[100][2][10][50];
     for (int i = 0; i < 50; i++)
     {
@@ -12,7 +12,7 @@ int main(void)
             {
                 for (int l = 0;l < 100;l++)
                 {
-                    testArray[l][k][j][i] = i*1000;
+                    testArray[l][k][j][i] = (i-j+l-k) * 1000;
                 }
             }
         }
