@@ -38,7 +38,7 @@ WriteMemoryCallback(void* contents, size_t size, size_t nmemb, void *userp)
 
 
 
-int main(void)
+int updateData(void)
 {
 	//set curl dependant variables
 	CURL *curl;
@@ -69,9 +69,9 @@ int main(void)
 
 		// Print the bytes retrieved
 		if (res != CURLE_OK)
-			printf("ERROR: Update Failed!\n Could not find destination!\n");
+			cout << "ERROR: Update Failed!\n Could not find destination!\n";
 		else
-			printf("%lu bytes retrived\n", (unsigned long)chunk.size);
+			cout << (unsigned long)chunk.size << "bytes retrived\n";
 
 		fprintf(outFile, chunk.memory); //Print the website contents to the output file
 	

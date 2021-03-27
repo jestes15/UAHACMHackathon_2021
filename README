@@ -1,1 +1,5 @@
 Project for the University of Alabama in Huntsville's Association for Computing Machinery chapter's Hackathon for 2021
+
+The Updater:
+	updater.cpp contains an updateData function that pulls the new data.xml
+	there is also a test file to test the updateData function
