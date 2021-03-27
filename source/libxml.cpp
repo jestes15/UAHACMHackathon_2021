@@ -14,7 +14,7 @@ void parseXML::parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::s
         stream2 << token;
         data.erase(0, pos + delimiter.length());
     }
-    stream2 << token;
+    stream2 << data;
 
     return;
 }
