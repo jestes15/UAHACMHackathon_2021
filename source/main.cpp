@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "libxml.h"
+#include "../header/libxml.h"
 
 using std::cout;
 using std::endl;
@@ -12,8 +12,8 @@ using std::cin;
 
 int main()
 {
-    std::ifstream stream1("data.xml");
-    std::ofstream stream2("data.txt", std::ios::app);
+    std::ifstream stream1("../data.cdc.gov/data.xml");
+    std::ofstream stream2("../data.cdc.gov/data.txt", std::ios::app);
     parseXML xml_obj;
 
     xml_obj.parseXML_s(stream1, stream2, "<row");
