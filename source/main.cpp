@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 #include "../header/libxml.h"
+#include "../header/updater.h"
+#include "../header/graph.h"
 
 using std::cout;
 using std::endl;
@@ -12,6 +14,7 @@ using std::cin;
 
 int main()
 {
+	updateData();
     std::ifstream stream1("../data.cdc.gov/data.xml");
     std::ofstream stream2("../data.cdc.gov/data.txt", std::ios::app);
     parseXML xml_obj;
