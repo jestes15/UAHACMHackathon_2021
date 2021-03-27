@@ -54,7 +54,7 @@ int main()
 		for (int j = 0;j < 50;j++)
 		{
 			anal.printTable(i, j);
-			cout << anal.avgNewCase(30,j);
+			cout << anal.avgNewCase(20201130,20201215,j);
 			cout << "\n" << i << " " << j << "\n";
 		}
 	}

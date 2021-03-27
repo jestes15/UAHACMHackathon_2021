@@ -57,22 +57,53 @@ double Analyser::avgNewCase(int timeL, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgNewCase(date start, date stop, int state)
+double Analyser::avgNewCase(int start, int stop, int state)
 {
-	return 0.0;
+	int total = 0;
+	int count = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][4][state] >= start && DATA[i][1][4][state] <= stop)
+		{
+			total += DATA[i][0][4][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
 }
 
 double Analyser::avgNewDeath(int state)
 {
-	return 0.0;
+	int total = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		total += DATA[i][0][8][state];
+	}
+
+	return ((double)total / (double)DATA_SIZE);
 }
 
 double Analyser::avgNewDeath(int timeL, int state)
 {
-	return 0.0;
+	int total = 0;
+	bool found = false;
+	int count = 0;
+	int newTime = timeShift(DATA[DATA_SIZE - 1][1][8][state], timeL);
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][8][state] >= newTime || found == true)
+		{
+			found = true;
+			total += DATA[i][0][8][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
 }
 
-double Analyser::avgNewDeath(date start, date stop, int state)
+double Analyser::avgNewDeath(int start, int stop, int state)
 {
 	return 0.0;
 }
