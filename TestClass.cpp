@@ -43,8 +43,16 @@ int main()
 	}
 
 	Analyser anal(garbo, 100);
+	for (int i = 0; i < 10;i++)
+	{
+		for (int j = 0;j < 50;j++)
+		{
+			anal.printTable(i, j);
+			cout << "\n" << i << " " << j << "\n";
+		}
+	}
 	cout << anal.avgNewCase(5);
 
-
+	return 1;
 
 }

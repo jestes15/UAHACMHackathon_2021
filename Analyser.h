@@ -1,5 +1,6 @@
 #pragma once
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 
@@ -20,6 +21,9 @@ public:
 	double avgNewDeath(int state);
 	double avgNewDeath(int timeL, int state);
 	double avgNewDeath(date start, date stop, int state);
+	void sortData();
+	int getSize() const;
+	void printTable(int t, int a);
 private:
 	int DATA_SIZE; 
 	int DATA[100][2][10][50];
