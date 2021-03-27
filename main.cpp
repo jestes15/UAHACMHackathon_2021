@@ -1,21 +1,19 @@
-#include "funky hack/funky hack/DataProcessor.h"
+#include "DataProcessor.h"
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <chrono>
 #include <thread>
-
+#include <math.h>
 
 
 
 using namespace std;
 
-int main()
+/* int main()
 {
-	DataProcessor process;
-	process.initialize("input.txt");
-	process.update();
-	cout << "here";
+	cout << "Welcome to the random data analysys program!\n";
+	cout << "we have data on:\n";
 	
-	process.printGarbo();
-}
+	
+}*/
