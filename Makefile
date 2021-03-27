@@ -1,13 +1,12 @@
-SOURCE_FILES = updater_TEST.cpp 
-HEADER_FILES = 
-
-OUT	= updateTEST
 CC	 = g++
-FLAGS	 =
-LFLAGS   = -lcurl
 
-update_test: $(OBJS)
-	$(CC) $(FLAGS) -o $(OUT) $(HEADER_FILES) $(SOURCE_FILES) $(LFLAGS)
+update_TEST: $(OBJS)
+	$(CC) $(FLAGS) -o updater_TEST updater_TEST.cpp -lcurl
+clean_update_TEST:
+	rm -f updater_TEST
 
-clean_update_test:
-	rm -f $(OUT)
+graph_TEST: $(OBJS)
+	$(CC) $(FLAGS) -o graph_TEST graph_TEST.cpp -lncurses
+clean_graph_TEST:
+	rm -f graph_TEST 
+
