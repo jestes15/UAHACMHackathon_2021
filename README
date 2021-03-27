@@ -1,6 +1,6 @@
 Project for the University of Alabama in Huntsville's Association for Computing Machinery chapter's Hackathon for 2021
 
-The purpose of this Project is to read data from the cdc.gov website and display the data in a meaningful way through the terminal
+The purpose of this Linux project is to read data from the cdc.gov website and display the data in a meaningful way through the terminal
 
 The Updater:
 	updater.cpp contains an updateData function that pulls the new data.xml
