@@ -1,4 +1,3 @@
-#include <ncurses.h>
 #include <iostream>
 // ARRAY FORMAT: [date]	  [date_or_time_bool]   [type_of_data]   [state]
 
