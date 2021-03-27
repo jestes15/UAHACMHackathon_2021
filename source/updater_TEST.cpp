@@ -1,5 +1,5 @@
 #include<iostream>
-#include "updater.cpp"
+#include "../header/updater.h"
 
 int main(void)
 {
