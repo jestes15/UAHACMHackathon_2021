@@ -4,7 +4,7 @@
 /*
 	  EXAMPLE GRAPH
 
-     			Deaths per week
+     			Deaths per time 
 1100k|
 1000k|                           9
 900k |
@@ -58,7 +58,20 @@ int graph(int array[][2][10][50], int type, int state, int total)
 				
 		}
 	}
+// Mark the spots on the board
+	int x;
+	int y;
 
+	for(int i = 0; i < total; i++)	
+	{	
+		y = array[i][0][type][state] / 1000; // divide by 1000 because the graph is in k
+		x = 1; //Cannot get X value until array creation is finished and the program can be tested with the real array
+
+		if (board[height - y - 4][x*2-1] >= 48 && board[height - y - 4][x*2-1] <= 57 )
+			board[height - y - 4][x*2-1]++;
+		else
+			board[height - y - 4][x*2-1] = '1';
+	}
 
 // Print Board
 	std::cout << "\u001b[2J" <<

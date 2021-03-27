@@ -12,7 +12,7 @@ int main(void)
             {
                 for (int l = 0;l < 100;l++)
                 {
-                    testArray[l][k][j][i] = i+j+k+l;
+                    testArray[l][k][j][i] = i*1000;
                 }
             }
         }
