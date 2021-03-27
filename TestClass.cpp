@@ -21,7 +21,8 @@ int main()
 		cout << dataTypes[i] << "\n";
 	}
 
-	int garbo[10][2][10][50];
+	int garbo[100][2][10][50];
+	srand(time(NULL));
 
 	for (int i = 0; i < 50; i++)
 	{
@@ -29,9 +30,9 @@ int main()
 		{
 			for (int k = 0;k < 2;k++)
 			{
-				for (int l = 0;l < 10;l++)
+				for (int l = 0;l < 100;l++)
 				{
-					srand(time(NULL));
+					
 
 					garbo[l][k][j][i] = rand()%100 +1;
 					if (k==0 && j==4 && i==5)
@@ -41,7 +42,7 @@ int main()
 		}
 	}
 
-	Analyser anal(garbo, 10);
+	Analyser anal(garbo, 100);
 	cout << anal.avgNewCase(5);
 
 
