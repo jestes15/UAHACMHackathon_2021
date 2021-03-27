@@ -25,7 +25,7 @@ int graph(int array[][2][10][50], int type, int state, int total)
 {
 // constants
 	const int length = total*1.8;
-	const int height = total/3;
+	const int height = total/2.5;
 
 	const char* topic[10] = 
 	{
@@ -42,6 +42,9 @@ int graph(int array[][2][10][50], int type, int state, int total)
 	};
 
 // Set Board
+
+	// The board is a 2d array of characters that change depenending on the data given,
+	// The if statments set the lined borders of the graph
 	char board[height][length];
 	for(int i = 0; i < height; i++)
 	{
@@ -59,10 +62,10 @@ int graph(int array[][2][10][50], int type, int state, int total)
 
 
 // Print Board
-	std::cout << "\u001b[2J";
-	std::cout << "\t\t\t\t\t\t\t\t\t\t\t";
-	std::cout << "Average " << topic[type] << " Per Week";
-	std::cout << '\n';
+	std::cout << "\u001b[2J" <<
+	"\t\t\t\t\t\t\t\t\t\t\t" << 
+	"Average " << topic[type] << " Per 2 Weeks" <<
+	'\n';
 	for(int i = 0; i < height; i++)
 	{
 		for(int j = 0; j < length; j++)
@@ -71,15 +74,15 @@ int graph(int array[][2][10][50], int type, int state, int total)
 			{
 				if(i < height-4)
 				{
-					std::cout << ((height-i)-4)*100 << 'k';
+					std::cout << ((height-i)-4)*100 << 'k'; // Print the values of the left side
 				}
 				std::cout<<'\t';
 			}
 			if(i == height-3 && j > 0 && j <= 60)
 			{
-				std::cout << j;//array[i][1][type][state];
+				std::cout << j; // Print the values for the week
 			}
-			std::cout << board[i][j];	
+			std::cout << board[i][j]; 
 		}
 		std::cout << '\n';
 	}
