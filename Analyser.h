@@ -24,6 +24,7 @@ public:
 	void sortData();
 	int getSize() const;
 	void printTable(int t, int a);
+	static int timeShift(int ini, int d);
 private:
 	int DATA_SIZE; 
 	int DATA[100][2][10][50];
