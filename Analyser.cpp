@@ -42,13 +42,19 @@ double Analyser::avgNewCase(int timeL, int state)
 
 	int total = 0;
 	bool found = false;
+	int count = 0;
+	int newTime = timeShift(DATA[DATA_SIZE - 1][1][4][state], timeL);
 	for (int i = 0; i <DATA_SIZE; i++)
 	{
-		if (DATA[i][1][4][state] = timeShift(DATA[DATA_SIZE - 1][1][4][state],timeL))
-		total += DATA[i][0][4][state];
+		if (DATA[i][1][4][state] >= newTime || found == true)
+		{
+			found = true;
+			total += DATA[i][0][4][state];
+			count++;
+		}
 	}
 
-	return ((double)total / (double)DATA_SIZE);
+	return ((double)total / (double)count);
 }
 
 double Analyser::avgNewCase(date start, date stop, int state)
@@ -124,8 +130,10 @@ int Analyser::timeShift(int ini,int d)
 	f = to_string(ini);
 
 	iY = stoi(f.substr(0, 4), NULL, 10);
-	iM = stoi(f.substr(3, 2), NULL, 10);
-	iD = stoi(f.substr(5, 4), NULL, 10);
+	iM = stoi(f.substr(4, 2), NULL, 10);
+	iD = stoi(f.substr(6, 2), NULL, 10);
+
+	cout << iY << " " << iM << " " << iD << "\n";
 
 		if (iD - d < 1 && (iM == 1 || iM == 2 || iM == 4 || iM == 6 || iM == 8 || iM == 9 || iM == 11))
 		{
@@ -169,8 +177,13 @@ int Analyser::timeShift(int ini,int d)
 
 			return (timeShift(iY * 10000 + iM * 100 + iD, d));
 		}
+		else if (d == 0)
+		{
+			return ini;
+		}
 		else
 		{
+			cout << iY * 10000 + iM * 100 + (iD - d)<< "\n";
 			return iY * 10000 + iM * 100 + (iD - d);
 		}
 

@@ -33,8 +33,14 @@ int main()
 				for (int l = 0;l < 100;l++)
 				{
 					
-
-					garbo[l][k][j][i] = rand()%100 +1;
+					if (k == 1)
+					{
+						garbo[l][k][j][i] = (rand() %12+1)*100+(rand()%31+1)+20200000;
+					}
+					else
+					{
+						garbo[l][k][j][i] = rand() % 100 + 1;
+					}
 					if (k==0 && j==4 && i==5)
 						cout << garbo[l][k][j][i]<<"\n";
 				}
@@ -43,15 +49,15 @@ int main()
 	}
 
 	Analyser anal(garbo, 100);
-	for (int i = 0; i < 10;i++)
+	for (int i = 4; i < 5;i++)
 	{
 		for (int j = 0;j < 50;j++)
 		{
 			anal.printTable(i, j);
+			cout << anal.avgNewCase(30,j);
 			cout << "\n" << i << " " << j << "\n";
 		}
 	}
-	cout << anal.avgNewCase(5);
 
 	return 1;
 
