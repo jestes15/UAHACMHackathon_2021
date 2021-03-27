@@ -51,7 +51,7 @@ int updateData(void)
 
 	// Set up Output file
 	FILE *outFile;
-	outFile = fopen("data.xml","w");
+	outFile = fopen("data.cdc.gov/data.xml","w");
 
 	curl_global_init(CURL_GLOBAL_ALL); //init curl
 
