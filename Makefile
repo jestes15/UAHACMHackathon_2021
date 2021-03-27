@@ -1,12 +1,13 @@
 CC	 = g++
+LDFLAGS = -lcurl
 
 update_TEST: $(OBJS)
-	$(CC) $(FLAGS) -o updater_TEST updater_TEST.cpp -lcurl
-clean_update_TEST:
+	$(CC) $(FLAGS) -o updater_TEST updater_TEST.cpp $(LDFLAGS)
+clean_updater_TEST:
 	rm -f updater_TEST
 
 graph_TEST: $(OBJS)
-	$(CC) $(FLAGS) -o graph_TEST graph_TEST.cpp -lncurses
+	$(CC) $(FLAGS) -o graph_TEST graph_TEST.cpp
 clean_graph_TEST:
 	rm -f graph_TEST 
 
