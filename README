@@ -2,4 +2,5 @@ Project for the University of Alabama in Huntsville's Association for Computing 
 
 The Updater:
 	updater.cpp contains an updateData function that pulls the new data.xml
+	The new data file comes from https://data.cdc.gov/Case-Surveillance/United-States-COVID-19-Cases-and-Deaths-by-State-o/9mfq-cb36/data
 	there is also a test file to test the updateData function
