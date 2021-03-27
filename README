@@ -9,4 +9,14 @@ The Updater:
 
 The Graph:
 	graph.cpp contains a function to print the given data into a scatter plot graph
+	there is also a test file to test the graph, run "make graph_TEST" to build it
+
+The Data Array:
+	DATA[d][t][s][a]
+	t = 2, s = 10, a = 50
+	setting t = 0 will get data, setting t = 1 will get the timestamp
+	setting s 0-9 will determine what data is being looked at (ie. Total cases, new cases, etc.)
+	setting a 0-49 will determine what state the data is from
+	d is from 0-number_of_entries and is the specific data point being looked at
+=======
 	there is also a test file to test the graph, run "make graph_TEST" to build it and "make clean_graph_TEST" to clean the output
