@@ -5,13 +5,6 @@
 
 using namespace std;
 
-struct date
-{
-	int day;
-	int month;
-	int year;
-};
-
 class Analyser
 {
 public:
@@ -22,6 +15,13 @@ public:
 	double avgNewDeath(int state);
 	double avgNewDeath(int timeL, int state);
 	double avgNewDeath(int start, int stop, int state);
+	double avgPNewCase(int state);
+	double avgPNewCase(int timeL, int state);
+	double avgPNewCase(int start, int stop, int state);
+	double avgNewDeath(int state);
+	double avgNewDeath(int timeL, int state);
+	double avgNewDeath(int start, int stop, int state);
+	double avgPNewCase(int state);
 	void sortData();
 	int getSize() const;
 	void printTable(int t, int a);

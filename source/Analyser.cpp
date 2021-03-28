@@ -1,4 +1,3 @@
-#pragma comment(linker, "/STACK:2000000")
 #include <string>
 #include <iostream>
 #include "../header/Analyser.h"
