@@ -44,7 +44,7 @@ inline int findday(int date)
 	return date%100;
 }
 
-int timeShift(int ini,int d)
+inline int timeShift(int ini,int d)
 {
     int iY, iM, iD;
     std::string f;
@@ -54,10 +54,9 @@ int timeShift(int ini,int d)
     iM = findmonth(ini);
     iD = findday(ini);
 
-    std::cout << iY << " " << iM << " " << iD << "\n";
-
         if (iD - d < 1 && (iM == 1 || iM == 2 || iM == 4 || iM == 6 || iM == 8 || iM == 9 || iM == 11))
         {
+            d -= iD;
             if (iM - 1 < 1)
             {
                 iY -= 1;
@@ -70,20 +69,20 @@ int timeShift(int ini,int d)
 
             iD = 31;
 
-            d -= iD;
 
             return (timeShift(iY * 10000 + iM * 100 + iD, d));
         }
         else if (iD - d < 1 && (iM == 5 || iM == 7 || iM == 10 || iM == 12))
         {
             iM--;
-            iD = 30;
             d -= iD;
+            iD = 30;
 
             return (timeShift(iY * 10000 + iM * 100 + iD, d));
         }
         else if (iD - d < 1 && iM == 3)
         {
+            d -= iD;
             if (iY % 4 == 0)
             {
                 iD = 29;
@@ -94,7 +93,6 @@ int timeShift(int ini,int d)
             }
 
             iM--;
-            d -= iD;
 
             return (timeShift(iY * 10000 + iM * 100 + iD, d));
         }
@@ -104,13 +102,12 @@ int timeShift(int ini,int d)
         }
         else
         {
-            std::cout << iY * 10000 + iM * 100 + (iD - d)<< "\n";
             return iY * 10000 + iM * 100 + (iD - d);
         }
 
 }
 
-int daysInYear(int date)
+inline int daysInYear(int date)
 {
     int iY, iM, iD;
     std::string f;
@@ -120,7 +117,7 @@ int daysInYear(int date)
     iM = findmonth(date);
     iD = findday(date);
 
-    if (iM = 1)
+    if (iM == 1)
     {
         return iD;
     }
@@ -185,24 +182,24 @@ inline int graph(int array[][2][10][50], int array_length, int type, int state, 
 		day = findday(array[i][1][type][state]); // take first two digits of the date (the day)
 
 		y = array[i][0][type][state] / 100000; // divide the data by 100000 because the graph is in 100k
-		x = day;
+		x = daysInYear(array[i][1][type][state]) / 7;
 
 		//debug info
-		std::cout << "y: " << y << '\t';
-		std::cout << "x: " << x << '\n';
+		std::cout << "y: " << height - y - 4 << '\t';
+		std::cout << "x: " << x*2-1 << '\n';
 		std::cout << "year: " << year << '\n';
 		std::cout << "month: " << month << '\n';
 		std::cout << "day: " << day << '\n';
-
-		if( findyear(array[i][0][type][state]) == yearPref)
-		{	
+		std::cout << "days in year: " << daysInYear(array[i][1][type][state]) << '\n';
 
 		// The subtractions in the x and y values are to adjust for the borders of the graph
 			if (board[height - y - 4][x*2-1] >= 48 && board[height - y - 4][x*2-1] <= 57 )
 				board[height - y - 4][x*2-1]++;
 			else
-				board[height - y - 4][x-1] = '1';
-		}
+			{
+				if(year == 2020)	
+					board[height - y - 4][x-1] = '1';
+			}
 	}
 
 // Print Board
