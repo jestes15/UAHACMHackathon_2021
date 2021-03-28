@@ -163,9 +163,9 @@ int main()
 		}
 		else if (a == 2)
 		{
-			bool loop = true;
-			while (loop)
-			{
+			//bool loop = true;
+			//while (loop)
+			//{
 				int state;
 				int sel;
 				int sel2;
@@ -179,7 +179,7 @@ int main()
 				cin >> sel;
 				if (sel == 11)
 				{
-					loop = false;
+				//	loop = false;
 				}
 
 				cout << "what's the year preference (2020 or 2021):\n";
@@ -187,13 +187,13 @@ int main()
 
 				graph(DATA,SIZE, sel-1, state-1, 100, temp);
 
-			}
+			//}
 		}
 		else if (a == 3)
 		{
-			bool loop = true;
-			while (loop)
-			{
+			//bool loop = true;
+			//while (loop)
+			//{
 				int state;
 				int sel;
 				int sel2;
@@ -314,9 +314,9 @@ int main()
 				}
 				else if (sel == 5)
 				{
-					loop = false;
+				//	loop = false;
 				}
-			}
+			//}
 		}
 		else
 			std::cout << "That is not a correct input, please try agian\n";
