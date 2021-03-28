@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <regex>
+#include <vector>
 
 #include "../header/libxml.h"
 #include "../header/updater.h"
@@ -96,8 +97,15 @@ int main()
 			stream3.open("../data.cdc.gov/data.txt", ios::in);
 			ofstream stream5;
 			stream5.open("../data.cdc.gov/data2.txt", ios::app);
+			
+			std::string** dataSet;
+			dataSet = (std::string**)malloc(26000 * sizeof(std::string));
+			for (int i = 0; i < 26000; i++)
+			{
+				dataSet[i] = (std::string*)malloc(12 * sizeof(std::string));
+			}
 
-			std::string dataSet[30000][12];
+
 			int counter = 0;
 			while (!stream3.eof())
 			{
@@ -107,7 +115,7 @@ int main()
 
 				std::string var[12];
 				std::string arr[12];
-				static std::string arr_v2[12];
+				std::string arr_v2[12];
 
 				for (int i = 0; i < 12; i++)
 				{
