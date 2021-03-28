@@ -4,6 +4,9 @@
 #include <fstream>
 #include <string>
 
+#ifndef XML_HEADER
+#define XML_HEADER
+
 class parseXML
 {
 private:
@@ -75,5 +78,7 @@ public:
 	"<pnew_death>[0-9]{0,}</pnew_death>"
 	};
 }
+
+#endif
 
 #include "../source/libxml.cpp"

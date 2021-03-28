@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <regex>
+
 #include "../header/libxml.h"
 #include "../header/updater.h"
 #include "../header/graph.h"
@@ -37,9 +39,10 @@ int main()
 		std::regex rx(xml_obj.patterns[i]);
 		std::smatch sm;
 		std::regex_search(data, sm, rx);
-		
+		std::cout << sm[0] << std::endl;
 	}
 
+    std::cout << "When ready, type a then enter to end the program" << std::endl;
     std::string a;
     cin >> a;
 
