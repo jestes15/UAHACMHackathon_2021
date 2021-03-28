@@ -128,8 +128,37 @@ int main()
 			stream5.close();
 		}
 		else if (a == 2)
-			graph(DATA, 4, 5, 100);
+		{
+			bool loop = true;
+			while (loop)
+			{
+				int state;
+				int sel;
+				int sel2;
+				int temp;
 
+				cout << "What state would you like to find an graph for? (enter a number from 1-50 representing a state in alphabetical order)\n";
+				cin >> state;
+
+				cout << "What data would you like to get the graph of?\n"
+					<< "1: total cases\n2: confirmed cases\n3: probable cases\n4: new cases\n5:probable new cases\n6: total deaths\n7: confirmed deaths\n8: probable deaths\n9: new deaths\n10: probable new deaths\n11: Exit\n";
+				cin >> sel;
+				if (sel == 11)
+				{
+					loop = false;
+				}
+
+				cout << "what's the year preference (2020 or 20201):\n";
+				cin >> temp;
+
+				graph(DATA, sel, state, 100, temp);
+
+			}
+		}
+		else
+			std::cout << "That is not a correct input, please try agian\n";
+			
+		}
 		else if (a == 3)
 		{
 			bool loop = true;
