@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <regex>
+#include <vector>
 
 #include "../header/libxml.h"
 #include "../header/updater.h"
@@ -79,7 +80,6 @@ int main()
 		else if (a == 1)
 		{
 			updateData();
-			// updateData();
 			parseXML xml_obj;
 
 			std::ifstream stream1;
@@ -97,30 +97,52 @@ int main()
 			stream3.open("../data.cdc.gov/data.txt", ios::in);
 			ofstream stream5;
 			stream5.open("../data.cdc.gov/data2.txt", ios::app);
+			
+			std::string** dataSet;
+			dataSet = (std::string**)malloc(26000 * sizeof(std::string));
+			for (int i = 0; i < 26000; i++)
+			{
+				dataSet[i] = (std::string*)malloc(12 * sizeof(std::string));
+			}
+
 
 			int counter = 0;
-			while (!stream3.eof() && counter < 5000)
+			while (!stream3.eof())
 			{
 				string data;
-				string data_ptr;
 
 				getline(stream3, data);
 
-				data_ptr = *xml_obj.parseXML_s(data);
-
+				std::string var[12];
+				std::string arr[12];
+				std::string arr_v2[12];
 
 				for (int i = 0; i < 12; i++)
 				{
-					char aaa = data_ptr[i];
-					cout << aaa;
-					stream5 << aaa << "pie ";
-				}
-				stream5 << "\n";
-				if (counter % 1000 == 0)
-				{
-					cout << counter << "\n";
+					std::regex rx(xml_obj.init_pattern[i]);
+					std::smatch sm;
+					std::regex_search(data, sm, rx);
+					var[i] = sm[0];
+
+					std::regex rx2(xml_obj.secondary_pattern[i]);
+					std::smatch sm2;
+					std::regex_search(var[i], sm2, rx2);
+					arr[i] = sm2[0];
+
+					int len = arr[i].length();
+
+					if (arr[i].substr(0, 1) == ">") {
+						arr_v2[i] = arr[i].erase(0, 1);
+						arr_v2[i] = arr[i].erase(len - 2, len);
+					}
+					else
+					{
+						arr_v2[i] = arr[i];
+					}
 				}
 
+				for (int i = 0; i < 12; i++)
+					dataSet[counter][i] = arr_v2[i];
 				counter++;
 			}
 
