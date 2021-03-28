@@ -81,6 +81,7 @@ int main()
 		{
 			updateData();
 			parseXML xml_obj;
+			std::cout << "Test 1" << std::endl;
 
 			std::ifstream stream1;
 			stream1.open("../data.cdc.gov/data.xml", ios::in);
@@ -88,18 +89,24 @@ int main()
 			stream2.open("../data.cdc.gov/data.txt", std::ios::out);
 
 			xml_obj.parseXML_s(stream1, stream2, "<row");
+			std::cout << "Test 2" << std::endl;
 
 			std::cout << "Finished" << std::endl;
 			stream1.close();
 			stream2.close();
+
+			std::cout << "Test 3" << std::endl;
 
 			ifstream stream3;
 			stream3.open("../data.cdc.gov/data.txt", ios::in);
 			ofstream stream5;
 			stream5.open("../data.cdc.gov/data2.txt", ios::app);
 
+			std::cout << "Test 4" << std::endl;
+
 			std::array<std::array<std::string, 12>, 26000>* array_v1 = new std::array<std::array<std::string, 12>, 26000>;
 			int counter = 0;
+			std::cout << "Test 5" << std::endl;
 			while (!stream3.eof())
 			{
 				string data;
