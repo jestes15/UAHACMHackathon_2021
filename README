@@ -11,7 +11,7 @@ The Graph:
 	graph.cpp contains a function to print the given data into a scatter plot graph
 	there is also a test file to test the graph, run "make graph_TEST" to build it and "make clean_graph_TEST" to clean the output
 
-Tje Analyser:
+The Analyser:
 	there is also a test file to test the analyser, run "make analyser_TEST to build it and "make clean_analyser_TEST" to clean the output
 
 The Data Array:
