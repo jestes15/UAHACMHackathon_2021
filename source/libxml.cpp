@@ -31,15 +31,40 @@ void parseXML::parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::s
     return;
 }
 
-/*
-std::string* parseXML_s(std::ifstream stream, std::string data, std::string delimiter)
+std::string* parseXML::parseXML_s(std::string data)
 {
-    size_t pos = 0;
-    std::string token;
-    
-    return nullptr;
+    std::string var[12];
+    std::string arr[12];
+    std::string arr_v2[12];
+
+    for (int i = 0; i < 12; i++)
+    {
+
+        std::regex rx(init_pattern[i]);
+        std::smatch sm;
+        std::regex_search(data, sm, rx);
+        var[i] = sm[0];
+
+        std::regex rx2(secondary_pattern[i]);
+        std::smatch sm2;
+        std::regex_search(var[i], sm2, rx2);
+        arr[i] = sm2[0];
+
+        int len = arr[i].length();
+
+        if (arr[i].substr(0, 1) == ">") {
+            arr_v2[i] = arr[i].erase(0, 1);
+            arr_v2[i] = arr[i].erase(len - 2, len);
+        }
+        else
+        {
+            arr_v2[i] = arr[i];
+        }
+    }
+
+    return arr_v2;
 }
-*/
+
 void parseXML::set_submission_date(std::string data)
 {
     submission_date = data;
