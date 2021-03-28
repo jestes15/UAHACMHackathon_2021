@@ -81,7 +81,7 @@ int main()
 			running = false;
 		else if (a == 1)
 		{
-			updateData();
+			//updateData();
 			parseXML xml_obj;
 			std::cout << "Test 1" << std::endl;
 
@@ -149,7 +149,7 @@ int main()
 				counter++;
 			}
 			std::cout << "Done" << std::endl;
-			/*
+			
 			for (int i = 0; i < counter; i++)
 			{
 				for (int j = 0; j < 12; j++)
@@ -158,7 +158,7 @@ int main()
 				}
 				stream5 << "\n";
 			}
-			*/
+			
 
 			std::cout << "Done" << std::endl;
 			stream5.close();
