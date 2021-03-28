@@ -1,6 +1,6 @@
-#include "Analyser.h"
 #include <string>
 #include <iostream>
+#include "../header/Analyser.h"
 
 using namespace std;
 

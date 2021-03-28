@@ -1,11 +1,10 @@
-#include "Analyser.h"
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctime>
 #include <thread>
 #include <math.h>
-
+#include "../header/Analyser.h"
 
 
 using namespace std;
