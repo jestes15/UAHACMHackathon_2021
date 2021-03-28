@@ -17,10 +17,8 @@ int main()
     // updateData();
 	parseXML xml_obj;
 
-    std::ifstream stream1;
-	stream1.open("../data.cdc.gov/data.xml",ios::in);
-    std::ofstream stream2;
-	stream2.open("../data.cdc.gov/data.txt", std::ios::out);
+    std::ifstream stream1("../data.cdc.goc/data.xml");
+    std::ofstream stream2("../data.cdc.goc/data.txt", std::ios::out);
 
     xml_obj.parseXML_s(stream1, stream2, "<row");
 
@@ -28,30 +26,24 @@ int main()
 	stream1.close();
 	stream2.close();
 	
-	ifstream stream3;
-	stream3.open("../data.cdc.gov/data.txt",ios::in);
-	ofstream stream5;
-	stream5.open("../data.cdc.gov/data2.txt", ios::app);
+	std::ifstream stream3("../data.cdc.goc/data.txt");
+	std::ofstream stream5("../data.cdc.goc/data2.txt", ios::app);
 
 	int counter = 0;
-	while (!stream3.eof() && counter < 5000)
+	while (!stream3.eof())
 	{
 		string data;
-		string data_ptr;
+		string* data_ptr = new string;
 
 		getline(stream3, data);
 
-		data_ptr = *xml_obj.parseXML_s(data);
-
-
+		data_ptr = xml_obj.parseXML_s(data);
 		for (int i = 0; i < 12; i++)
 		{
-			char aaa = data_ptr[i];
-			cout<< aaa;
-			stream5 << aaa<< "pie ";
+		//	stream5 << data_ptr[i] << " ";
 		}
 		stream5 << "\n";
-		if (counter%1000 ==0)
+		if (counter%100 ==0)
 		{
 			cout<<counter<<"\n";
 		}
@@ -82,8 +74,7 @@ int main()
 
 
 	std::cout << "Done" << std::endl;
-	stream5.close();
+
 
     return 0;
-
 }
