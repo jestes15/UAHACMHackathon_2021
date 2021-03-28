@@ -1,27 +1,19 @@
-// UAHHackathon.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+#include "DataProcessor.h"
 #include <iostream>
-#include <fstream>
-#include <string>
-#include "../header/libxml.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <chrono>
+#include <thread>
+#include <math.h>
 
-using std::cout;
-using std::endl;
-using std::cin;
 
-int main()
+
+using namespace std;
+
+/* int main()
 {
-    std::ifstream stream1("../data.cdc.gov/data.xml");
-    std::ofstream stream2("../data.cdc.gov/data.txt", std::ios::app);
-    parseXML xml_obj;
-
-    xml_obj.parseXML_s(stream1, stream2, "<row");
-
-    cout << "Finsihed";
-
-    std::string a;
-    cin >> a;
-
-    return 0;
-}
+	cout << "Welcome to the random data analysys program!\n";
+	cout << "we have data on:\n";
+	
+	
+}*/
