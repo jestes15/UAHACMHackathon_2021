@@ -146,9 +146,16 @@ int main()
 				}
 				for (int i = 0; i < 12; i++)
 					array_v1[0][counter][i] = array_v2[i];
-
-				stream5 << counter << "\n";
 				counter++;
+			}
+
+			for (int i = 0; i < counter; i++)
+			{
+				for (int j = 0; j < 12; j++)
+				{
+					stream5 << array_v1[0][counter][i] << ", ";	
+				}
+				stream5 << "\n";
 			}
 
 			std::cout << "Done" << std::endl;
