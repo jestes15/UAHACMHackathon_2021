@@ -155,10 +155,6 @@ int main()
 
 			}
 		}
-		else
-			std::cout << "That is not a correct input, please try agian\n";
-			
-		}
 		else if (a == 3)
 		{
 			bool loop = true;
