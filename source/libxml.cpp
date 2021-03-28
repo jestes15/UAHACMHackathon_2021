@@ -2,10 +2,8 @@
 
 void parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::string delimiter)
 {
-    std::cout << "Hello" << std::endl;
     std::string data;
     std::getline(stream1, data);
-    std::cout << data << std::endl;
     size_t pos = 0;
     std::string token;
 
@@ -25,7 +23,6 @@ void parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::string deli
         }
 
         stream2 << token;
-        std::cout << token << std::endl;
         data.erase(0, pos + delimiter.length());
     }
     stream2 << data;

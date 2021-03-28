@@ -83,16 +83,13 @@ int main()
 		{
 			//updateData();
 			parseXML xml_obj;
+			std::cout << "Test 1" << std::endl;
 
 			std::ifstream stream1;
 			stream1.open("./data.cdc.gov/data.xml", std::ios::in);
 
 			std::ofstream stream2;
 			stream2.open("./data.cdc.gov/data.txt", std::ios::out);
-
-			std::string data;
-			getline(stream1, data);
-			std::cout << data << std::endl;
 
 			parseXML_s(stream1, stream2, "<row");
 
