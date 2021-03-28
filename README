@@ -1,6 +1,6 @@
 Project for the University of Alabama in Huntsville's Association for Computing Machinery chapter's Hackathon for 2021
 
-The purpose of this Project is to read data from the cdc.gov website and display the data in a meaningful way through the terminal
+The purpose of this Linux project is to read data from the cdc.gov website and display the data in a meaningful way through the terminal
 
 The Updater:
 	updater.cpp contains an updateData function that pulls the new data.xml
@@ -10,3 +10,16 @@ The Updater:
 The Graph:
 	graph.cpp contains a function to print the given data into a scatter plot graph
 	there is also a test file to test the graph, run "make graph_TEST" to build it and "make clean_graph_TEST" to clean the output
+
+The Analyser:
+	there is also a test file to test the analyser, run "make analyser_TEST to build it and "make clean_analyser_TEST" to clean the output
+
+The Data Array:
+	DATA[d][t][s][a]
+	t = 2, s = 10, a = 50
+	setting t = 0 will get data, setting t = 1 will get the timestamp
+	setting s 0-9 will determine what data is being looked at (ie. Total cases, new cases, etc.)
+	setting a 0-49 will determine what state the data is from
+	d is from 0-number_of_entries and is the specific data point being looked at
+=======
+	
