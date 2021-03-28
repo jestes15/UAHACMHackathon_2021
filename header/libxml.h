@@ -59,7 +59,6 @@ public:
 
 	void set_pnew_death(std::string);
 	std::string get_pnew_death();
-<<<<<<< HEAD
 
 	std::string patterns[11] = {
 	"<submission_date>[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}T00:00:00</submission_date>",
@@ -76,8 +75,5 @@ public:
 	"<pnew_death>[0-9]{0,}</pnew_death>"
 	};
 };
-=======
-};
 
 #include "../source/libxml.cpp"
->>>>>>> dca488efc7161eea168295ebdf317c766c6f2c30
