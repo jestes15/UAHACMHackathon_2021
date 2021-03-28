@@ -70,7 +70,7 @@ int main()
 		std::cout << "\nPlease enter what you would like to do." << std::endl
 			<< "0: Exit the program" << std::endl
 			<< "1: Update the data file" << std::endl
-			<< "2: print a graph (WIP)" << std::endl
+			<< "2: print a graph" << std::endl
 			<< "3: get averages\n";
 
 		cin >> a;
@@ -148,10 +148,10 @@ int main()
 					loop = false;
 				}
 
-				cout << "what's the year preference (2020 or 20201):\n";
+				cout << "what's the year preference (2020 or 2021):\n";
 				cin >> temp;
 
-				graph(DATA,SIZE, sel, state, 100, temp);
+				graph(DATA,SIZE, sel-1, state-1, 100, temp);
 
 			}
 		}
