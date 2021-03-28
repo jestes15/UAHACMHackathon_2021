@@ -184,6 +184,7 @@ int main()
 
 				cout << "What state would you like to find an average for? (enter a number from 1-50 representing a state in alphabetical order)\n";
 				cin >> state;
+				state--;
 
 				cout << "What data would you like to get the average of?\n"
 					<< "1: new cases\n2: probable new cases\n3: new deaths\n4: probable new deaths\n5: Exit\n";
@@ -191,19 +192,19 @@ int main()
 
 				if (sel == 1)
 				{
-					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period\n";
 					cin >> sel2;
 					if (sel2 == 1)
 					{
 						cout << PROCESSOR.avgNewCase(DATA, state) << "\n";
 					}
-					else if (sel == 2)
+					else if (sel2 == 2)
 					{
 						cout << "How many days back?\n";
 						cin >> temp;
 						cout << PROCESSOR.avgNewCase(DATA, temp, state) << "\n";
 					}
-					else if (sel == 3)
+					else if (sel2 == 3)
 					{
 						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
 						cin >> temp;
@@ -217,19 +218,19 @@ int main()
 				}
 				else if (sel == 2)
 				{
-					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period\n";
 					cin >> sel2;
 					if (sel2 == 1)
 					{
 						cout << PROCESSOR.avgPNewCase(DATA, state) << "\n";
 					}
-					else if (sel == 2)
+					else if (sel2 == 2)
 					{
 						cout << "How many days back?\n";
 						cin >> temp;
 						cout << PROCESSOR.avgPNewCase(DATA, temp, state) << "\n";
 					}
-					else if (sel == 3)
+					else if (sel2 == 3)
 					{
 						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
 						cin >> temp;
@@ -243,19 +244,19 @@ int main()
 				}
 				else if (sel == 3)
 				{
-					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period\n";
 					cin >> sel2;
 					if (sel2 == 1)
 					{
 						cout << PROCESSOR.avgNewDeath(DATA, state) << "\n";
 					}
-					else if (sel == 2)
+					else if (sel2 == 2)
 					{
 						cout << "How many days back?\n";
 						cin >> temp;
 						cout << PROCESSOR.avgNewDeath(DATA, temp, state) << "\n";
 					}
-					else if (sel == 3)
+					else if (sel2 == 3)
 					{
 						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
 						cin >> temp;
@@ -269,19 +270,19 @@ int main()
 				}
 				else if (sel == 4)
 				{
-					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period\n";
 					cin >> sel2;
 					if (sel2 == 1)
 					{
 						cout << PROCESSOR.avgPNewDeath(DATA, state) << "\n";
 					}
-					else if (sel == 2)
+					else if (sel2 == 2)
 					{
 						cout << "How many days back?\n";
 						cin >> temp;
 						cout << PROCESSOR.avgPNewDeath(DATA, temp, state) << "\n";
 					}
-					else if (sel == 3)
+					else if (sel2 == 3)
 					{
 						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
 						cin >> temp;
