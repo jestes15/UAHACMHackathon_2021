@@ -1,4 +1,4 @@
-#include "../header/libxml.h"
+#include "libxml.h"
 
 void parseXML::parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::string delimiter)
 {
@@ -11,6 +11,18 @@ void parseXML::parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::s
     while ((pos = data.find(delimiter)) != std::string::npos)
     {
         token = data.substr(0, pos) + "\n";
+
+        if (token.compare("<response>\n") == 0)
+        {
+            data.erase(0, pos + delimiter.length());
+            continue;
+        }
+        if (token.compare(">\n") == 0)
+        {
+            data.erase(0, pos + delimiter.length());
+            continue;
+        }
+
         stream2 << token;
         data.erase(0, pos + delimiter.length());
     }
@@ -19,6 +31,15 @@ void parseXML::parseXML_s(std::ifstream& stream1, std::ofstream& stream2, std::s
     return;
 }
 
+/*
+std::string* parseXML_s(std::ifstream stream, std::string data, std::string delimiter)
+{
+    size_t pos = 0;
+    std::string token;
+    
+    return nullptr;
+}
+*/
 void parseXML::set_submission_date(std::string data)
 {
     submission_date = data;

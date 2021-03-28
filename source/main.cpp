@@ -14,17 +14,33 @@ using std::cin;
 
 int main()
 {
-	updateData();
-    std::ifstream stream1("../data.cdc.gov/data.xml");
-    std::ofstream stream2("../data.cdc.gov/data.txt", std::ios::app);
+    // updateData();
+    std::ifstream stream1("data.xml");
+    std::ofstream stream2("data.txt", std::ios::out);
     parseXML xml_obj;
 
     xml_obj.parseXML_s(stream1, stream2, "<row");
 
-    cout << "Finsihed";
+    cout << "Finished";
+	stream1.close();
+	stream2.close();
+
+	std::ifstream stream3("data.txt");
+
+	std::string data;
+	std::getline(stream3, data);
+
+	std::string var[12]{ "" };
+
+	for (int i = 0; i < 11; i++)
+	{
+		std::regex rx(xml_obj.patterns[i]);
+		std::smatch sm;
+		std::regex_search(data, sm, rx);
+		
+	}
 
     std::string a;
     cin >> a;
 
     return 0;
-}
