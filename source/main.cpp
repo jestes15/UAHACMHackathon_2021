@@ -23,58 +23,58 @@ int main()
 {
 
 	bool running = true;
-    	int a;
+	int a;
 
-		//########################################
-		//#####IMPORTANT INITIALIZATIONS HERE#####
-		//########################################
+	//########################################
+	//#####IMPORTANT INITIALIZATIONS HERE#####
+	//########################################
 
-		int DATA[10][2][10][50];
+	int DATA[10][2][10][50];
 
-		// Manually set Dates
-		DATA[0][1][4][5] = 20201105;
-		DATA[1][1][4][5] = 20201105;
-		DATA[2][1][4][5] = 20201130;
-		DATA[3][1][4][5] = 20201129;
-		DATA[4][1][4][5] = 20201123;
-		DATA[5][1][4][5] = 20201128;
-		DATA[6][1][4][5] = 20201110;
-		DATA[7][1][4][5] = 20201120;
-		DATA[8][1][4][5] = 20201110;
-		DATA[9][1][4][5] = 20201111;
+	// Manually set Dates
+	DATA[0][1][4][5] = 20201105;
+	DATA[1][1][4][5] = 20201105;
+	DATA[2][1][4][5] = 20201130;
+	DATA[3][1][4][5] = 20201129;
+	DATA[4][1][4][5] = 20201123;
+	DATA[5][1][4][5] = 20201128;
+	DATA[6][1][4][5] = 20201110;
+	DATA[7][1][4][5] = 20201120;
+	DATA[8][1][4][5] = 20201110;
+	DATA[9][1][4][5] = 20201111;
 
-		// Manually set the Data
-		DATA[0][0][4][5] = 101000;
-		DATA[1][0][4][5] = 105000;
-		DATA[2][0][4][5] = 208000;
-		DATA[3][0][4][5] = 309000;
-		DATA[4][0][4][5] = 303000;
-		DATA[5][0][4][5] = 505000;
-		DATA[6][0][4][5] = 602000;
-		DATA[7][0][4][5] = 403000;
-		DATA[8][0][4][5] = 507000;
-		DATA[9][0][4][5] = 209000;
+	// Manually set the Data
+	DATA[0][0][4][5] = 101000;
+	DATA[1][0][4][5] = 105000;
+	DATA[2][0][4][5] = 208000;
+	DATA[3][0][4][5] = 309000;
+	DATA[4][0][4][5] = 303000;
+	DATA[5][0][4][5] = 505000;
+	DATA[6][0][4][5] = 602000;
+	DATA[7][0][4][5] = 403000;
+	DATA[8][0][4][5] = 507000;
+	DATA[9][0][4][5] = 209000;
 
 
-		const int SIZE = getDataSetSize();
-		//int DATA[SIZE][2][10][50];
-		Analyser PROCESSOR(SIZE);
-		PROCESSOR.sortData(DATA);
-		//########################################
-		//#####IMPORTANT INITIALIZATIONS HERE#####
-		//########################################
+	const int SIZE = getDataSetSize();
+	//int DATA[SIZE][2][10][50];
+	Analyser PROCESSOR(SIZE);
+	PROCESSOR.sortData(DATA);
+	//########################################
+	//#####IMPORTANT INITIALIZATIONS HERE#####
+	//########################################
 
 
 	while (running)
 	{
 		std::cout << "\nPlease enter what you would like to do." << std::endl
-    	<< "0: Exit the program" << std::endl
-    	<< "1: Update the data file" << std::endl
-    	<< "2: print a graph (WIP)" << std::endl
-		<< "3: get averages\n";
+			<< "0: Exit the program" << std::endl
+			<< "1: Update the data file" << std::endl
+			<< "2: print a graph (WIP)" << std::endl
+			<< "3: get averages\n";
 
-    	cin >> a;
-		if(a == 0)
+		cin >> a;
+		if (a == 0)
 			running = false;
 		else if (a == 1)
 		{
@@ -127,9 +127,9 @@ int main()
 			std::cout << "Done" << std::endl;
 			stream5.close();
 		}
-/*		else if(a == 2)
-			graph();
-*/
+		else if (a == 2)
+			graph(DATA, 4, 5, 100);
+
 		else if (a == 3)
 		{
 			bool loop = true;
@@ -145,8 +145,8 @@ int main()
 				cin >> state;
 
 				cout << "What data would you like to get the average of?\n"
-				<< "1: new cases\n2: probable new cases\n3: new deaths\n4: probable new deaths\n5: Exit\n";
-					cin >> sel;
+					<< "1: new cases\n2: probable new cases\n3: new deaths\n4: probable new deaths\n5: Exit\n";
+				cin >> sel;
 
 				if (sel == 1)
 				{
@@ -202,55 +202,55 @@ int main()
 				}
 				else if (sel == 3)
 				{
-						cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
-						cin >> sel2;
-						if (sel2 == 1)
-						{
-							cout << PROCESSOR.avgNewDeath(DATA, state) << "\n";
-						}
-						else if (sel == 2)
-						{
-							cout << "How many days back?\n";
-							cin >> temp;
-							cout << PROCESSOR.avgNewDeath(DATA, temp, state) << "\n";
-						}
-						else if (sel == 3)
-						{
-							cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
-							cin >> temp;
-							cout << "end day:\n";
-							cin >> temp2;
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cin >> sel2;
+					if (sel2 == 1)
+					{
+						cout << PROCESSOR.avgNewDeath(DATA, state) << "\n";
+					}
+					else if (sel == 2)
+					{
+						cout << "How many days back?\n";
+						cin >> temp;
+						cout << PROCESSOR.avgNewDeath(DATA, temp, state) << "\n";
+					}
+					else if (sel == 3)
+					{
+						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
+						cin >> temp;
+						cout << "end day:\n";
+						cin >> temp2;
 
-							cout << PROCESSOR.avgNewDeath(DATA, temp, temp2, state) << "\n";
-						}
-						else
-							cout << "Invalid input\n";
+						cout << PROCESSOR.avgNewDeath(DATA, temp, temp2, state) << "\n";
+					}
+					else
+						cout << "Invalid input\n";
 				}
 				else if (sel == 4)
 				{
-							cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
-							cin >> sel2;
-							if (sel2 == 1)
-							{
-								cout << PROCESSOR.avgPNewDeath(DATA, state) << "\n";
-							}
-							else if (sel == 2)
-							{
-								cout << "How many days back?\n";
-								cin >> temp;
-								cout << PROCESSOR.avgPNewDeath(DATA, temp, state) << "\n";
-							}
-							else if (sel == 3)
-							{
-								cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
-								cin >> temp;
-								cout << "end day:\n";
-								cin >> temp2;
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cin >> sel2;
+					if (sel2 == 1)
+					{
+						cout << PROCESSOR.avgPNewDeath(DATA, state) << "\n";
+					}
+					else if (sel == 2)
+					{
+						cout << "How many days back?\n";
+						cin >> temp;
+						cout << PROCESSOR.avgPNewDeath(DATA, temp, state) << "\n";
+					}
+					else if (sel == 3)
+					{
+						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
+						cin >> temp;
+						cout << "end day:\n";
+						cin >> temp2;
 
-								cout << PROCESSOR.avgPNewDeath(DATA, temp, temp2, state) << "\n";
-							}
-							else
-								cout << "Invalid input\n";
+						cout << PROCESSOR.avgPNewDeath(DATA, temp, temp2, state) << "\n";
+					}
+					else
+						cout << "Invalid input\n";
 				}
 				else if (sel == 5)
 				{
@@ -263,8 +263,8 @@ int main()
 	}
 
 
-	
 
-    return 0;
+
+	return 0;
 
 }
