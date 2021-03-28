@@ -23,80 +23,58 @@ int main()
 {
 
 	bool running = true;
-    	int a;
+	int a;
 
-		//########################################
-		//#####IMPORTANT INITIALIZATIONS HERE#####
-		//########################################
+	//########################################
+	//#####IMPORTANT INITIALIZATIONS HERE#####
+	//########################################
 
-<<<<<<< HEAD
-    std::cout << "Finished" << std::endl;
-	stream1.close();
-	stream2.close();
-	
-	std::ifstream stream3("../data.cdc.goc/data.txt");
-	std::ofstream stream5("../data.cdc.goc/data2.txt", std::ios::out);
-	int L = 0;
-/*	while (!stream3.eof())
-	{
-		std::string data;
-		std::string* data_ptr;
-		std::getline(stream3, data);
+	int DATA[10][2][10][50];
 
-		data_ptr = xml_obj.parseXML_s(data);
-		for (int i = 0; i < 12; i++) {
-			stream5 << data_ptr[i] << " ";
-		}
-		stream5 << "\n";
-	}*/
-=======
-		int DATA[10][2][10][50];
+	// Manually set Dates
+	DATA[0][1][4][5] = 20201105;
+	DATA[1][1][4][5] = 20201105;
+	DATA[2][1][4][5] = 20201130;
+	DATA[3][1][4][5] = 20201129;
+	DATA[4][1][4][5] = 20201123;
+	DATA[5][1][4][5] = 20201128;
+	DATA[6][1][4][5] = 20201110;
+	DATA[7][1][4][5] = 20201120;
+	DATA[8][1][4][5] = 20201110;
+	DATA[9][1][4][5] = 20201111;
 
-		// Manually set Dates
-		DATA[0][1][4][5] = 20201105;
-		DATA[1][1][4][5] = 20201105;
-		DATA[2][1][4][5] = 20201130;
-		DATA[3][1][4][5] = 20201129;
-		DATA[4][1][4][5] = 20201123;
-		DATA[5][1][4][5] = 20201128;
-		DATA[6][1][4][5] = 20201110;
-		DATA[7][1][4][5] = 20201120;
-		DATA[8][1][4][5] = 20201110;
-		DATA[9][1][4][5] = 20201111;
-
-		// Manually set the Data
-		DATA[0][0][4][5] = 101000;
-		DATA[1][0][4][5] = 105000;
-		DATA[2][0][4][5] = 208000;
-		DATA[3][0][4][5] = 309000;
-		DATA[4][0][4][5] = 303000;
-		DATA[5][0][4][5] = 505000;
-		DATA[6][0][4][5] = 602000;
-		DATA[7][0][4][5] = 403000;
-		DATA[8][0][4][5] = 507000;
-		DATA[9][0][4][5] = 209000;
+	// Manually set the Data
+	DATA[0][0][4][5] = 101000;
+	DATA[1][0][4][5] = 105000;
+	DATA[2][0][4][5] = 208000;
+	DATA[3][0][4][5] = 309000;
+	DATA[4][0][4][5] = 303000;
+	DATA[5][0][4][5] = 505000;
+	DATA[6][0][4][5] = 602000;
+	DATA[7][0][4][5] = 403000;
+	DATA[8][0][4][5] = 507000;
+	DATA[9][0][4][5] = 209000;
 
 
-		const int SIZE = getDataSetSize();
-		//int DATA[SIZE][2][10][50];
-		Analyser PROCESSOR(SIZE);
-		PROCESSOR.sortData(DATA);
-		//########################################
-		//#####IMPORTANT INITIALIZATIONS HERE#####
-		//########################################
->>>>>>> even_funkier_branch
+	const int SIZE = getDataSetSize();
+	//int DATA[SIZE][2][10][50];
+	Analyser PROCESSOR(SIZE);
+	PROCESSOR.sortData(DATA);
+	//########################################
+	//#####IMPORTANT INITIALIZATIONS HERE#####
+	//########################################
 
 
 	while (running)
 	{
 		std::cout << "\nPlease enter what you would like to do." << std::endl
-    	<< "0: Exit the program" << std::endl
-    	<< "1: Update the data file" << std::endl
-    	<< "2: print a graph (WIP)" << std::endl
-		<< "3: get averages\n";
+			<< "0: Exit the program" << std::endl
+			<< "1: Update the data file" << std::endl
+			<< "2: print a graph" << std::endl
+			<< "3: get averages\n";
 
-    	cin >> a;
-		if(a == 0)
+		cin >> a;
+		if (a == 0)
 			running = false;
 		else if (a == 1)
 		{
@@ -149,9 +127,34 @@ int main()
 			std::cout << "Done" << std::endl;
 			stream5.close();
 		}
-/*		else if(a == 2)
-			graph();
-*/
+		else if (a == 2)
+		{
+			bool loop = true;
+			while (loop)
+			{
+				int state;
+				int sel;
+				int sel2;
+				int temp;
+
+				cout << "What state would you like to find an graph for? (enter a number from 1-50 representing a state in alphabetical order)\n";
+				cin >> state;
+
+				cout << "What data would you like to get the graph of?\n"
+					<< "1: total cases\n2: confirmed cases\n3: probable cases\n4: new cases\n5:probable new cases\n6: total deaths\n7: confirmed deaths\n8: probable deaths\n9: new deaths\n10: probable new deaths\n11: Exit\n";
+				cin >> sel;
+				if (sel == 11)
+				{
+					loop = false;
+				}
+
+				cout << "what's the year preference (2020 or 2021):\n";
+				cin >> temp;
+
+				graph(DATA,SIZE, sel-1, state-1, 100, temp);
+
+			}
+		}
 		else if (a == 3)
 		{
 			bool loop = true;
@@ -167,8 +170,8 @@ int main()
 				cin >> state;
 
 				cout << "What data would you like to get the average of?\n"
-				<< "1: new cases\n2: probable new cases\n3: new deaths\n4: probable new deaths\n5: Exit\n";
-					cin >> sel;
+					<< "1: new cases\n2: probable new cases\n3: new deaths\n4: probable new deaths\n5: Exit\n";
+				cin >> sel;
 
 				if (sel == 1)
 				{
@@ -224,55 +227,55 @@ int main()
 				}
 				else if (sel == 3)
 				{
-						cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
-						cin >> sel2;
-						if (sel2 == 1)
-						{
-							cout << PROCESSOR.avgNewDeath(DATA, state) << "\n";
-						}
-						else if (sel == 2)
-						{
-							cout << "How many days back?\n";
-							cin >> temp;
-							cout << PROCESSOR.avgNewDeath(DATA, temp, state) << "\n";
-						}
-						else if (sel == 3)
-						{
-							cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
-							cin >> temp;
-							cout << "end day:\n";
-							cin >> temp2;
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cin >> sel2;
+					if (sel2 == 1)
+					{
+						cout << PROCESSOR.avgNewDeath(DATA, state) << "\n";
+					}
+					else if (sel == 2)
+					{
+						cout << "How many days back?\n";
+						cin >> temp;
+						cout << PROCESSOR.avgNewDeath(DATA, temp, state) << "\n";
+					}
+					else if (sel == 3)
+					{
+						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
+						cin >> temp;
+						cout << "end day:\n";
+						cin >> temp2;
 
-							cout << PROCESSOR.avgNewDeath(DATA, temp, temp2, state) << "\n";
-						}
-						else
-							cout << "Invalid input\n";
+						cout << PROCESSOR.avgNewDeath(DATA, temp, temp2, state) << "\n";
+					}
+					else
+						cout << "Invalid input\n";
 				}
 				else if (sel == 4)
 				{
-							cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
-							cin >> sel2;
-							if (sel2 == 1)
-							{
-								cout << PROCESSOR.avgPNewDeath(DATA, state) << "\n";
-							}
-							else if (sel == 2)
-							{
-								cout << "How many days back?\n";
-								cin >> temp;
-								cout << PROCESSOR.avgPNewDeath(DATA, temp, state) << "\n";
-							}
-							else if (sel == 3)
-							{
-								cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
-								cin >> temp;
-								cout << "end day:\n";
-								cin >> temp2;
+					cout << "What kind of average?\n1: average over the total dataset\n2: average over the last n days\n3: average between a time period";
+					cin >> sel2;
+					if (sel2 == 1)
+					{
+						cout << PROCESSOR.avgPNewDeath(DATA, state) << "\n";
+					}
+					else if (sel == 2)
+					{
+						cout << "How many days back?\n";
+						cin >> temp;
+						cout << PROCESSOR.avgPNewDeath(DATA, temp, state) << "\n";
+					}
+					else if (sel == 3)
+					{
+						cout << "between what days? (enter as one number in year month day ie. 3/28/2021 would be entered as 20212803)\nstart day:\n";
+						cin >> temp;
+						cout << "end day:\n";
+						cin >> temp2;
 
-								cout << PROCESSOR.avgPNewDeath(DATA, temp, temp2, state) << "\n";
-							}
-							else
-								cout << "Invalid input\n";
+						cout << PROCESSOR.avgPNewDeath(DATA, temp, temp2, state) << "\n";
+					}
+					else
+						cout << "Invalid input\n";
 				}
 				else if (sel == 5)
 				{
@@ -285,8 +288,8 @@ int main()
 	}
 
 
-	
 
-    return 0;
+
+	return 0;
 
 }
