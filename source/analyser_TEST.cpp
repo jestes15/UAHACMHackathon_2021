@@ -12,6 +12,7 @@ using namespace std;
 
 int main()
 {
+	const int size = 100;
 	string dataTypes[] = { "Garbage" };
 	int dataSize = 1;
 
@@ -21,7 +22,7 @@ int main()
 		cout << dataTypes[i] << "\n";
 	}
 
-	int garbo[100][2][10][50];
+	int garbo[size][2][10][50];
 	srand(time(NULL));
 
 	for (int i = 0; i < 50; i++)
@@ -30,7 +31,7 @@ int main()
 		{
 			for (int k = 0;k < 2;k++)
 			{
-				for (int l = 0;l < 100;l++)
+				for (int l = 0;l < size;l++)
 				{
 					
 					if (k == 1)
@@ -48,13 +49,15 @@ int main()
 		}
 	}
 
-	Analyser anal(garbo, 100);
+	Analyser anal(size);
+	anal.sortData(garbo);
+
 	for (int i = 4; i < 5;i++)
 	{
 		for (int j = 0;j < 50;j++)
 		{
-			anal.printTable(i, j);
-			cout << anal.avgNewCase(20201130,20201215,j);
+			anal.printTable(garbo,i, j);
+			//cout << anal.avgNewCase(garbo,20201130,20201215,j);
 			cout << "\n" << i << " " << j << "\n";
 		}
 	}

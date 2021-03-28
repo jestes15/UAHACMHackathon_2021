@@ -4,29 +4,13 @@
 
 using namespace std;
 
-Analyser::Analyser(int data[][2][10][50], int s)
+Analyser::Analyser(int s)
 {
 	DATA_SIZE = s;
-
-	for (int i = 0; i < 50; i++)
-	{
-		for (int j = 0; j < 10;j++)
-		{
-			for (int k = 0;k < 2;k++)
-			{
-				for (int l = 0;l < s;l++)
-				{
-					DATA[l][k][j][i] = data[l][k][j][i];
-				}
-			}
-		}
-	}
-
-	sortData();
 }
 
 
-double Analyser::avgNewCase(int state)
+double Analyser::avgNewCase(int DATA[][2][10][50], int state)
 {
 	int total = 0;
 	for (int i = 0; i < DATA_SIZE; i++)
@@ -37,7 +21,7 @@ double Analyser::avgNewCase(int state)
 	return ((double)total/(double)DATA_SIZE);
 }
 
-double Analyser::avgNewCase(int timeL, int state)
+double Analyser::avgNewCase(int DATA[][2][10][50], int timeL, int state)
 {
 
 	int total = 0;
@@ -57,7 +41,7 @@ double Analyser::avgNewCase(int timeL, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgNewCase(int start, int stop, int state)
+double Analyser::avgNewCase(int DATA[][2][10][50], int start, int stop, int state)
 {
 	int total = 0;
 	int count = 0;
@@ -73,7 +57,7 @@ double Analyser::avgNewCase(int start, int stop, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgNewDeath(int state)
+double Analyser::avgNewDeath(int DATA[][2][10][50], int state)
 {
 	int total = 0;
 	for (int i = 0; i < DATA_SIZE; i++)
@@ -84,7 +68,7 @@ double Analyser::avgNewDeath(int state)
 	return ((double)total / (double)DATA_SIZE);
 }
 
-double Analyser::avgNewDeath(int timeL, int state)
+double Analyser::avgNewDeath(int DATA[][2][10][50], int timeL, int state)
 {
 	int total = 0;
 	bool found = false;
@@ -103,7 +87,7 @@ double Analyser::avgNewDeath(int timeL, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgNewDeath(int start, int stop, int state)
+double Analyser::avgNewDeath(int DATA[][2][10][50], int start, int stop, int state)
 {
 	int total = 0;
 	int count = 0;
@@ -119,7 +103,7 @@ double Analyser::avgNewDeath(int start, int stop, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgPNewCase(int state)
+double Analyser::avgPNewCase(int DATA[][2][10][50], int state)
 {
 	int total = 0;
 	for (int i = 0; i < DATA_SIZE; i++)
@@ -130,7 +114,7 @@ double Analyser::avgPNewCase(int state)
 	return ((double)total / (double)DATA_SIZE);
 }
 
-double Analyser::avgPNewCase(int timeL, int state)
+double Analyser::avgPNewCase(int DATA[][2][10][50], int timeL, int state)
 {
 
 	int total = 0;
@@ -150,7 +134,7 @@ double Analyser::avgPNewCase(int timeL, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgPNewCase(int start, int stop, int state)
+double Analyser::avgPNewCase(int DATA[][2][10][50], int start, int stop, int state)
 {
 	int total = 0;
 	int count = 0;
@@ -166,7 +150,7 @@ double Analyser::avgPNewCase(int start, int stop, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgPNewDeath(int state)
+double Analyser::avgPNewDeath(int DATA[][2][10][50], int state)
 {
 	int total = 0;
 	for (int i = 0; i < DATA_SIZE; i++)
@@ -177,7 +161,7 @@ double Analyser::avgPNewDeath(int state)
 	return ((double)total / (double)DATA_SIZE);
 }
 
-double Analyser::avgPNewDeath(int timeL, int state)
+double Analyser::avgPNewDeath(int DATA[][2][10][50], int timeL, int state)
 {
 	int total = 0;
 	bool found = false;
@@ -196,7 +180,7 @@ double Analyser::avgPNewDeath(int timeL, int state)
 	return ((double)total / (double)count);
 }
 
-double Analyser::avgPNewDeath(int start, int stop, int state)
+double Analyser::avgPNewDeath(int DATA[][2][10][50], int start, int stop, int state)
 {
 	int total = 0;
 	int count = 0;
@@ -212,7 +196,7 @@ double Analyser::avgPNewDeath(int start, int stop, int state)
 	return ((double)total / (double)count);
 }
 
-void Analyser::sortData()
+void Analyser::sortData(int DATA[][2][10][50])
 {
 	for (int i = 0; i < 50;i++)
 	{
@@ -245,7 +229,7 @@ void Analyser::sortData()
 	}
 }
 
-void Analyser::printTable(int t, int a)
+void Analyser::printTable(int DATA[][2][10][50], int t, int a)
 {
 	for (int i = 0; i < DATA_SIZE;i++)
 	{
