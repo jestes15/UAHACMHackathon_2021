@@ -1,11 +1,15 @@
+#pragma comment(linker, "/STACK:2000000")
 #include <string>
 #include <iostream>
 #include "../header/Analyser.h"
+
+
 
 using namespace std;
 
 Analyser::Analyser(int data[][2][10][50], int s)
 {
+
 	DATA_SIZE = s;
 
 	for (int i = 0; i < 50; i++)
@@ -105,7 +109,18 @@ double Analyser::avgNewDeath(int timeL, int state)
 
 double Analyser::avgNewDeath(int start, int stop, int state)
 {
-	return 0.0;
+	int total = 0;
+	int count = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][4][state] >= start && DATA[i][1][8][state] <= stop)
+		{
+			total += DATA[i][0][8][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
 }
 
 void Analyser::sortData()

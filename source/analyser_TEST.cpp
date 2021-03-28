@@ -6,7 +6,6 @@
 #include <math.h>
 #include "../header/Analyser.h"
 
-
 using namespace std;
 
 int main()
@@ -19,8 +18,7 @@ int main()
 	{
 		cout << dataTypes[i] << "\n";
 	}
-
-	int garbo[100][2][10][50];
+	auto garbo = new int[100][2][10][50];
 	srand(time(NULL));
 
 	for (int i = 0; i < 50; i++)

@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iostream>
 
+
 using namespace std;
 
 struct date
