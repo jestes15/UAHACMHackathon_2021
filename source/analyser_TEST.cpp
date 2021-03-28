@@ -1,4 +1,4 @@
-#include "Analyser.h"
+#include "../header/Analyser.h"
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
