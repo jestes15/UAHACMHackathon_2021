@@ -35,7 +35,7 @@ std::string* parseXML::parseXML_s(std::string data)
 {
     std::string var[12];
     std::string arr[12];
-    std::string arr_v2[12];
+    static std::string arr_v2[12];
 
     for (int i = 0; i < 12; i++)
     {
