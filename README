@@ -9,6 +9,7 @@ The Updater:
 
 The Graph:
 	graph.cpp contains a function to print the given data into a scatter plot graph
+	the graph function prints out a single year on a 100k by week basis
 	there is also a test file to test the graph, run "make graph_TEST" to build it and "make clean_graph_TEST" to clean the output
 
 The Analyser:

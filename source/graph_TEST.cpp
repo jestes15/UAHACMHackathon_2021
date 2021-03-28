@@ -2,20 +2,31 @@
 
 int main(void)
 {
-	
-	int testArray[10][2][10][50];
+
+	int array_length = 20;
+	int testArray[array_length][2][10][50];
 
 // Manually set Dates
-    testArray[0][1][4][5] = 20201105;
-    testArray[1][1][4][5] = 20201105;
-    testArray[2][1][4][5] = 20201130;
-    testArray[3][1][4][5] = 20201129;
-    testArray[4][1][4][5] = 20201123;
+    testArray[0][1][4][5] = 20200505;
+    testArray[1][1][4][5] = 20200505;
+    testArray[2][1][4][5] = 20200530;
+    testArray[3][1][4][5] = 20200529;
+    testArray[4][1][4][5] = 20200523;
     testArray[5][1][4][5] = 20201128;
     testArray[6][1][4][5] = 20201110;
     testArray[7][1][4][5] = 20201120;
     testArray[8][1][4][5] = 20201110;
     testArray[9][1][4][5] = 20201111;
+    testArray[10][1][4][5] = 20201105;
+    testArray[11][1][4][5] = 20201105;
+    testArray[12][1][4][5] = 20201130;
+    testArray[13][1][4][5] = 20201129;
+    testArray[14][1][4][5] = 20201123;
+    testArray[15][1][4][5] = 20201128;
+    testArray[16][1][4][5] = 20201110;
+    testArray[17][1][4][5] = 20201120;
+    testArray[18][1][4][5] = 20201110;
+    testArray[19][1][4][5] = 20201111;
 
 // Manually set the Data
     testArray[0][0][4][5] = 101000;
@@ -28,8 +39,19 @@ int main(void)
     testArray[7][0][4][5] = 403000;
     testArray[8][0][4][5] = 507000;
     testArray[9][0][4][5] = 209000;
+    testArray[10][0][4][5] = 105000;
+    testArray[11][0][4][5] = 208000;
+    testArray[12][0][4][5] = 309000;
+    testArray[13][0][4][5] = 303000;
+    testArray[14][0][4][5] = 505000;
+    testArray[15][0][4][5] = 602000;
+    testArray[16][0][4][5] = 403000;
+    testArray[17][0][4][5] = 507000;
+    testArray[18][0][4][5] = 209000;
+    testArray[19][0][4][5] = 101000;
 
-	graph(testArray,10, 4, 5, 100, 2020);
+//	graph ( array , array length, type of data , state , total , year )
+	graph(testArray, array_length , 4, 5, 100, 2020);
 
 
 /*    for (int i = 0; i < 50; i++)

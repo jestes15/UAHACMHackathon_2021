@@ -44,6 +44,7 @@ inline int findday(int date)
 	return date%100;
 }
 
+// Find the amount of days in a month
 inline int timeShift(int ini,int d)
 {
     int iY, iM, iD;
@@ -107,6 +108,7 @@ inline int timeShift(int ini,int d)
 
 }
 
+// Counts the amount of days since new years in a year
 inline int daysInYear(int date)
 {
     int iY, iM, iD;
@@ -182,7 +184,7 @@ inline int graph(int array[][2][10][50], int array_length, int type, int state, 
 		day = findday(array[i][1][type][state]); // take first two digits of the date (the day)
 
 		y = array[i][0][type][state] / 100000; // divide the data by 100000 because the graph is in 100k
-		x = daysInYear(array[i][1][type][state]) / 7;
+		x = daysInYear(array[i][1][type][state]) / 7; // divide the data by 7 because the graph is in weeks
 
 		//debug info
 		std::cout << "y: " << height - y - 4 << '\t';
@@ -198,7 +200,7 @@ inline int graph(int array[][2][10][50], int array_length, int type, int state, 
 			else
 			{
 				if(year == 2020)	
-					board[height - y - 4][x-1] = '1';
+					board[height - y - 4][x*2-1] = '1';
 			}
 	}
 
