@@ -151,7 +151,7 @@ int main()
 				cout << "what's the year preference (2020 or 20201):\n";
 				cin >> temp;
 
-				graph(DATA, sel, state, 100, temp);
+				graph(DATA,SIZE, sel, state, 100, temp);
 
 			}
 		}
