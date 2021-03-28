@@ -31,7 +31,7 @@ double Analyser::avgNewCase(int state)
 	int total = 0;
 	for (int i = 0; i < DATA_SIZE; i++)
 	{
-		total += DATA[i][0][4][state];
+		total += DATA[i][0][3][state];
 	}
 
 	return ((double)total/(double)DATA_SIZE);
@@ -43,13 +43,13 @@ double Analyser::avgNewCase(int timeL, int state)
 	int total = 0;
 	bool found = false;
 	int count = 0;
-	int newTime = timeShift(DATA[DATA_SIZE - 1][1][4][state], timeL);
+	int newTime = timeShift(DATA[DATA_SIZE - 1][1][3][state], timeL);
 	for (int i = 0; i <DATA_SIZE; i++)
 	{
-		if (DATA[i][1][4][state] >= newTime || found == true)
+		if (DATA[i][1][3][state] >= newTime || found == true)
 		{
 			found = true;
-			total += DATA[i][0][4][state];
+			total += DATA[i][0][3][state];
 			count++;
 		}
 	}
@@ -63,9 +63,9 @@ double Analyser::avgNewCase(int start, int stop, int state)
 	int count = 0;
 	for (int i = 0; i < DATA_SIZE; i++)
 	{
-		if (DATA[i][1][4][state] >= start && DATA[i][1][4][state] <= stop)
+		if (DATA[i][1][3][state] >= start && DATA[i][1][3][state] <= stop)
 		{
-			total += DATA[i][0][4][state];
+			total += DATA[i][0][3][state];
 			count++;
 		}
 	}
@@ -105,7 +105,111 @@ double Analyser::avgNewDeath(int timeL, int state)
 
 double Analyser::avgNewDeath(int start, int stop, int state)
 {
-	return 0.0;
+	int total = 0;
+	int count = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][8][state] >= start && DATA[i][1][8][state] <= stop)
+		{
+			total += DATA[i][0][8][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
+}
+
+double Analyser::avgPNewCase(int state)
+{
+	int total = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		total += DATA[i][0][4][state];
+	}
+
+	return ((double)total / (double)DATA_SIZE);
+}
+
+double Analyser::avgPNewCase(int timeL, int state)
+{
+
+	int total = 0;
+	bool found = false;
+	int count = 0;
+	int newTime = timeShift(DATA[DATA_SIZE - 1][1][4][state], timeL);
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][4][state] >= newTime || found == true)
+		{
+			found = true;
+			total += DATA[i][0][4][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
+}
+
+double Analyser::avgPNewCase(int start, int stop, int state)
+{
+	int total = 0;
+	int count = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][4][state] >= start && DATA[i][1][4][state] <= stop)
+		{
+			total += DATA[i][0][4][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
+}
+
+double Analyser::avgPNewDeath(int state)
+{
+	int total = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		total += DATA[i][0][9][state];
+	}
+
+	return ((double)total / (double)DATA_SIZE);
+}
+
+double Analyser::avgPNewDeath(int timeL, int state)
+{
+	int total = 0;
+	bool found = false;
+	int count = 0;
+	int newTime = timeShift(DATA[DATA_SIZE - 1][1][9][state], timeL);
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][9][state] >= newTime || found == true)
+		{
+			found = true;
+			total += DATA[i][0][9][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
+}
+
+double Analyser::avgPNewDeath(int start, int stop, int state)
+{
+	int total = 0;
+	int count = 0;
+	for (int i = 0; i < DATA_SIZE; i++)
+	{
+		if (DATA[i][1][9][state] >= start && DATA[i][1][9][state] <= stop)
+		{
+			total += DATA[i][0][9][state];
+			count++;
+		}
+	}
+
+	return ((double)total / (double)count);
 }
 
 void Analyser::sortData()
