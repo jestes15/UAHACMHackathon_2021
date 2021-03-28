@@ -144,6 +144,7 @@ int main()
 				for (int i = 0; i < 12; i++)
 					array_v1[0][counter][i] = array_v2[i];
 
+				stream5 << counter << "\n";
 				counter++;
 			}
 
