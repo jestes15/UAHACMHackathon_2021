@@ -21,6 +21,12 @@ public:
 	double avgNewDeath(int state);
 	double avgNewDeath(int timeL, int state);
 	double avgNewDeath(int start, int stop, int state);
+	double avgPNewCase(int state);
+	double avgPNewCase(int timeL, int state);
+	double avgPNewCase(int start, int stop, int state);
+	double avgPNewDeath(int state);
+	double avgPNewDeath(int timeL, int state);
+	double avgPNewDeath(int start, int stop, int state);
 	void sortData();
 	int getSize() const;
 	void printTable(int t, int a);
