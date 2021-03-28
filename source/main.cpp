@@ -31,7 +31,7 @@ int main()
 	std::ifstream stream3("../data.cdc.goc/data.txt");
 	std::ofstream stream5("../data.cdc.goc/data2.txt", std::ios::out);
 	int L = 0;
-	while (!stream3.eof())
+/*	while (!stream3.eof())
 	{
 		std::string data;
 		std::string* data_ptr;
@@ -42,7 +42,7 @@ int main()
 			stream5 << data_ptr[i] << " ";
 		}
 		stream5 << "\n";
-	}
+	}*/
 
 	bool running = true;
     int a;
