@@ -58,3 +58,5 @@ public:
 	void set_pnew_death(std::string);
 	std::string get_pnew_death();
 };
+
+#include "../source/libxml.cpp"
