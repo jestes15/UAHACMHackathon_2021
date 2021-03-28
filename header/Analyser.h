@@ -14,24 +14,23 @@ struct date
 class Analyser
 {
 public:
-	Analyser(int data[][2][10][50], int s);
-	double avgNewCase(int state);
-	double avgNewCase(int timeL, int state);
-	double avgNewCase(int start, int stop, int state);
-	double avgNewDeath(int state);
-	double avgNewDeath(int timeL, int state);
-	double avgNewDeath(int start, int stop, int state);
-	double avgPNewCase(int state);
-	double avgPNewCase(int timeL, int state);
-	double avgPNewCase(int start, int stop, int state);
-	double avgPNewDeath(int state);
-	double avgPNewDeath(int timeL, int state);
-	double avgPNewDeath(int start, int stop, int state);
-	void sortData();
+	Analyser(int s);
+	double avgNewCase(int DATA[][2][10][50], int state);
+	double avgNewCase(int DATA[][2][10][50], int timeL, int state);
+	double avgNewCase(int DATA[][2][10][50], int start, int stop, int state);
+	double avgNewDeath(int DATA[][2][10][50], int state);
+	double avgNewDeath(int DATA[][2][10][50], int timeL, int state);
+	double avgNewDeath(int DATA[][2][10][50], int start, int stop, int state);
+	double avgPNewCase(int DATA[][2][10][50], int state);
+	double avgPNewCase(int DATA[][2][10][50], int timeL, int state);
+	double avgPNewCase(int DATA[][2][10][50], int start, int stop, int state);
+	double avgPNewDeath(int DATA[][2][10][50], int state);
+	double avgPNewDeath(int DATA[][2][10][50], int timeL, int state);
+	double avgPNewDeath(int DATA[][2][10][50], int start, int stop, int state);
+	void sortData(int DATA[][2][10][50]);
 	int getSize() const;
-	void printTable(int t, int a);
+	void printTable(int DATA[][2][10][50], int t, int a);
 	static int timeShift(int ini, int d);
 private:
-	int DATA_SIZE; 
-	int DATA[100][2][10][50];
+	int DATA_SIZE;
 };
