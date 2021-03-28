@@ -17,34 +17,57 @@ using std::cin;
 int main()
 {
     // updateData();
-    std::ifstream stream1("data.xml");
-    std::ofstream stream2("data.txt", std::ios::out);
-    parseXML xml_obj;
+	parseXML xml_obj;
+
+    std::ifstream stream1("../data.cdc.goc/data.xml");
+    std::ofstream stream2("../data.cdc.goc/data.txt", std::ios::out);
 
     xml_obj.parseXML_s(stream1, stream2, "<row");
 
-    cout << "Finished";
+    std::cout << "Finished" << std::endl;
 	stream1.close();
 	stream2.close();
-
-	std::ifstream stream3("data.txt");
-
-	std::string data;
-	std::getline(stream3, data);
-
-	std::string var[12]{ "" };
-
-	for (int i = 0; i < 11; i++)
+	
+	std::ifstream stream3("../data.cdc.goc/data.txt");
+	std::ofstream stream5("../data.cdc.goc/data2.txt", std::ios::out);
+	int L = 0;
+	while (!stream3.eof())
 	{
-		std::regex rx(xml_obj.patterns[i]);
-		std::smatch sm;
-		std::regex_search(data, sm, rx);
-		std::cout << sm[0] << std::endl;
+		std::string data;
+		std::string* data_ptr;
+		std::getline(stream3, data);
+
+		data_ptr = xml_obj.parseXML_s(data);
+		for (int i = 0; i < 12; i++) {
+			stream5 << data_ptr[i] << " ";
+		}
+		stream5 << "\n";
 	}
 
-    std::cout << "When ready, type a then enter to end the program" << std::endl;
-    std::string a;
-    cin >> a;
+	bool running = true;
+    int a;
+
+	while (running)
+	{
+		std::cout << "\nPlease enter what you would like to do." << std::endl
+    	<< "0: Exit the program" << std::endl
+    	<< "1: Update the data file" << std::endl
+    	<< "2: print a graph (WIP)" << std::endl;
+    	cin >> a;
+		if(a == 0)
+			running = false;
+		else if(a == 1)
+			updateData();
+/*		else if(a == 2)
+			graph();
+*/
+		else
+			std::cout << "That is not a correct input, please try agian\n";
+	}
+
+
+	std::cout << "Done" << std::endl;
+
 
     return 0;
 }
