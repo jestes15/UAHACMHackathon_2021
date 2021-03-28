@@ -4,7 +4,7 @@ SOURCE_PATH = ./source
 HEADER_PATH = ./header
 
 all: $(OBJS)
-	$(CC) $(FLAGS) -o covidData $(SOURCE_PATH)/updater.cpp $(SOURCE_PATH)/graph.cpp  $(SOURCE_PATH)/main.cpp $(UPDATE_LDFLAGS)
+	$(CC) $(FLAGS) -o covidData $(SOURCE_PATH)/updater.cpp $(SOURCE_PATH)/graph.cpp $(SOURCE_PATH)/analyser.cpp $(SOURCE_PATH)/main.cpp $(UPDATE_LDFLAGS)
 clean:
 	rm -f covidData 
 
