@@ -29,6 +29,27 @@ int main()
 		//#####IMPORTANT INITIALIZATIONS HERE#####
 		//########################################
 
+<<<<<<< HEAD
+    std::cout << "Finished" << std::endl;
+	stream1.close();
+	stream2.close();
+	
+	std::ifstream stream3("../data.cdc.goc/data.txt");
+	std::ofstream stream5("../data.cdc.goc/data2.txt", std::ios::out);
+	int L = 0;
+/*	while (!stream3.eof())
+	{
+		std::string data;
+		std::string* data_ptr;
+		std::getline(stream3, data);
+
+		data_ptr = xml_obj.parseXML_s(data);
+		for (int i = 0; i < 12; i++) {
+			stream5 << data_ptr[i] << " ";
+		}
+		stream5 << "\n";
+	}*/
+=======
 		int DATA[10][2][10][50];
 
 		// Manually set Dates
@@ -63,6 +84,7 @@ int main()
 		//########################################
 		//#####IMPORTANT INITIALIZATIONS HERE#####
 		//########################################
+>>>>>>> even_funkier_branch
 
 
 	while (running)
