@@ -81,7 +81,7 @@ int main()
 			running = false;
 		else if (a == 1)
 		{
-			//updateData();
+			updateData();
 			parseXML xml_obj;
 			std::cout << "Test 1" << std::endl;
 
@@ -108,7 +108,6 @@ int main()
 
 			std::cout << "Test 4" << std::endl;
 
-			//std::array<std::array<std::string, 12>, 26000>* array_v1 = new std::array<std::array<std::string, 12>, 26000>;
 			int counter = 0;
 			std::cout << "Test 5" << std::endl;
 			while (!stream3.eof())
