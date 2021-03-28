@@ -68,6 +68,8 @@ int main()
 
 	while (running)
 	{
+		std::array<std::array<std::string, 12>, 26000>* array_v1 = new std::array<std::array<std::string, 12>, 26000>;
+
 		std::cout << "\nPlease enter what you would like to do." << std::endl
 			<< "0: Exit the program" << std::endl
 			<< "1: Update the data file" << std::endl
@@ -79,16 +81,21 @@ int main()
 			running = false;
 		else if (a == 1)
 		{
-			updateData();
+			//updateData();
 			parseXML xml_obj;
-			std::cout << "Test 1" << std::endl;
 
 			std::ifstream stream1;
-			stream1.open("../data.cdc.gov/data.xml", ios::in);
-			std::ofstream stream2;
-			stream2.open("../data.cdc.gov/data.txt", std::ios::out);
+			stream1.open("./data.cdc.gov/data.xml", std::ios::in);
 
-			xml_obj.parseXML_s(stream1, stream2, "<row");
+			std::ofstream stream2;
+			stream2.open("./data.cdc.gov/data.txt", std::ios::out);
+
+			std::string data;
+			getline(stream1, data);
+			std::cout << data << std::endl;
+
+			parseXML_s(stream1, stream2, "<row");
+
 			std::cout << "Test 2" << std::endl;
 
 			std::cout << "Finished" << std::endl;
@@ -98,13 +105,13 @@ int main()
 			std::cout << "Test 3" << std::endl;
 
 			ifstream stream3;
-			stream3.open("../data.cdc.gov/data.txt", ios::in);
+			stream3.open("./data.cdc.gov/data.txt", std::ios::in);
 			ofstream stream5;
-			stream5.open("../data.cdc.gov/data2.txt", ios::app);
+			stream5.open("./data.cdc.gov/data2.txt", std::ios::app);
 
 			std::cout << "Test 4" << std::endl;
 
-			std::array<std::array<std::string, 12>, 26000>* array_v1 = new std::array<std::array<std::string, 12>, 26000>;
+			//std::array<std::array<std::string, 12>, 26000>* array_v1 = new std::array<std::array<std::string, 12>, 26000>;
 			int counter = 0;
 			std::cout << "Test 5" << std::endl;
 			while (!stream3.eof())
