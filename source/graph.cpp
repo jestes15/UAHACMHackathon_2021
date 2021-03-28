@@ -1,3 +1,4 @@
+#include <string>
 #include <iostream>
 // ARRAY FORMAT: [date]	  [date_or_time_bool]   [type_of_data]   [state]
 
@@ -6,11 +7,11 @@
 
      			Deaths per time 
 1100k|
-1000k|                           9
+1000k|                          7  
 900k |
 800k |                  6 1
-700k |
-600k |            5
+700k |            6
+600k |            5       2
 500k |                        1
 400k |
 300k |                3
@@ -20,7 +21,116 @@
 	  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
 */ 
 
-inline int graph(int array[][2][10][50], int type, int state, int total)
+inline int findyear(int date)
+{
+	while(date >= 10000)
+		date = date/10;	
+	return date;
+}
+
+inline int findmonth(int tempDate)
+{
+	int date = tempDate;
+		
+	while(date >= 1000000)
+		date = date/10;	
+	date = date%100;
+	
+	return date;
+}
+
+inline int findday(int date)
+{
+	return date%100;
+}
+
+// Find the amount of days in a month
+inline int timeShift(int ini,int d)
+{
+    int iY, iM, iD;
+    std::string f;
+    f = std::to_string(ini);
+
+    iY = findyear(ini);
+    iM = findmonth(ini);
+    iD = findday(ini);
+
+        if (iD - d < 1 && (iM == 1 || iM == 2 || iM == 4 || iM == 6 || iM == 8 || iM == 9 || iM == 11))
+        {
+            d -= iD;
+            if (iM - 1 < 1)
+            {
+                iY -= 1;
+                iM = 12;
+            }
+            else
+            {
+                iM--;
+            }
+
+            iD = 31;
+
+
+            return (timeShift(iY * 10000 + iM * 100 + iD, d));
+        }
+        else if (iD - d < 1 && (iM == 5 || iM == 7 || iM == 10 || iM == 12))
+        {
+            iM--;
+            d -= iD;
+            iD = 30;
+
+            return (timeShift(iY * 10000 + iM * 100 + iD, d));
+        }
+        else if (iD - d < 1 && iM == 3)
+        {
+            d -= iD;
+            if (iY % 4 == 0)
+            {
+                iD = 29;
+            }
+            else
+            {
+                iD = 28;
+            }
+
+            iM--;
+
+            return (timeShift(iY * 10000 + iM * 100 + iD, d));
+        }
+        else if (d == 0)
+        {
+            return ini;
+        }
+        else
+        {
+            return iY * 10000 + iM * 100 + (iD - d);
+        }
+
+}
+
+// Counts the amount of days since new years in a year
+inline int daysInYear(int date)
+{
+    int iY, iM, iD;
+    std::string f;
+    f = std::to_string(date);
+
+    iY = findyear(date);
+    iM = findmonth(date);
+    iD = findday(date);
+
+    if (iM == 1)
+    {
+        return iD;
+    }
+    else
+    {
+        return daysInYear(timeShift(date, iD)) + iD;
+    }
+
+}
+
+inline int graph(int array[][2][10][50], int array_length, int type, int state, int total, int yearPref)
 {
 // constants
 	const int length = total*1.8;
@@ -61,25 +171,43 @@ inline int graph(int array[][2][10][50], int type, int state, int total)
 // Mark the spots on the board
 	int x;
 	int y;
+	int year;
+	int month;
+	int day;
+	
+	int mtd = 0; //Months to Days variable
 
-	for(int i = 0; i < total; i++)	
+	for(int i = 0; i < array_length; i++)	
 	{	
-		y = array[i][0][type][state] / 1000; // divide the data by 1000 because the graph is in k
-		x = i; //Cannot get X value until array creation is finished and the program can be tested with the real array
-		std::cout << y << '\n';
+		year = findyear(array[i][1][type][state]);
+		month = findmonth(array[i][1][type][state]);
+		day = findday(array[i][1][type][state]); // take first two digits of the date (the day)
+
+		y = array[i][0][type][state] / 100000; // divide the data by 100000 because the graph is in 100k
+		x = daysInYear(array[i][1][type][state]) / 7; // divide the data by 7 because the graph is in weeks
+
+		//debug info
+		std::cout << "y: " << height - y - 4 << '\t';
+		std::cout << "x: " << x*2-1 << '\n';
+		std::cout << "year: " << year << '\n';
+		std::cout << "month: " << month << '\n';
+		std::cout << "day: " << day << '\n';
+		std::cout << "days in year: " << daysInYear(array[i][1][type][state]) << '\n';
 
 		// The subtractions in the x and y values are to adjust for the borders of the graph
-		if (board[height - y - 4][x*2-1] >= 48 && board[height - y - 4][x*2-1] <= 57 )
-			board[height - y - 4][x*2-1]++;
-		else
-			board[height - y - 4][x*2-1] = '1';
+			if (board[height - y - 4][x*2-1] >= 48 && board[height - y - 4][x*2-1] <= 57 )
+				board[height - y - 4][x*2-1]++;
+			else
+			{
+				if(year == 2020)	
+					board[height - y - 4][x*2-1] = '1';
+			}
 	}
 
 // Print Board
-	std::cout << "\u001b[2J" <<
-	"\t\t\t\t\t\t\t\t\t\t\t" << 
-	"Average " << topic[type] << " Per 2 Weeks" <<
-	'\n';
+	std::cout << //"\u001b[2J" <<
+	"\t\t\t\t\t\t\t\t\t" << 
+	"Average " << topic[type] << " Per Week in " << yearPref << '\n';
 	for(int i = 0; i < height; i++)
 	{
 		for(int j = 0; j < length; j++)
