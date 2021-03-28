@@ -77,7 +77,7 @@ public:
 	"<new_death>[0-9]{0,}\\.[0-9]{0,}</new_death>",
 	"<pnew_death>[0-9]{0,}</pnew_death>"
 	};
-}
+};
 
 #endif
 
