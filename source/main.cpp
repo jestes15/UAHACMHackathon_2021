@@ -148,7 +148,8 @@ int main()
 					array_v1[0][counter][i] = array_v2[i];
 				counter++;
 			}
-
+			std::cout << "Done" << std::endl;
+			/*
 			for (int i = 0; i < counter; i++)
 			{
 				for (int j = 0; j < 12; j++)
@@ -157,6 +158,7 @@ int main()
 				}
 				stream5 << "\n";
 			}
+			*/
 
 			std::cout << "Done" << std::endl;
 			stream5.close();
