@@ -15,56 +15,12 @@ using namespace std;
 // ################# 
 const int getDataSetSize()
 {
-	return 100;
+	return 10;
 }
 //####################
 
 int main()
 {
-    // updateData();
-	parseXML xml_obj;
-
-    std::ifstream stream1;
-	stream1.open("../data.cdc.gov/data.xml",ios::in);
-    std::ofstream stream2;
-	stream2.open("../data.cdc.gov/data.txt", std::ios::out);
-
-    xml_obj.parseXML_s(stream1, stream2, "<row");
-
-    std::cout << "Finished" << std::endl;
-	stream1.close();
-	stream2.close();
-	
-	ifstream stream3;
-	stream3.open("../data.cdc.gov/data.txt",ios::in);
-	ofstream stream5;
-	stream5.open("../data.cdc.gov/data2.txt", ios::app);
-
-	int counter = 0;
-	while (!stream3.eof() && counter < 5000)
-	{
-		string data;
-		string data_ptr;
-
-		getline(stream3, data);
-
-		data_ptr = *xml_obj.parseXML_s(data);
-
-
-		for (int i = 0; i < 12; i++)
-		{
-			char aaa = data_ptr[i];
-			cout<< aaa;
-			stream5 << aaa<< "pie ";
-		}
-		stream5 << "\n";
-		if (counter%1000 ==0)
-		{
-			cout<<counter<<"\n";
-		}
-
-		counter++;
-	}
 
 	bool running = true;
     	int a;
@@ -72,8 +28,36 @@ int main()
 		//########################################
 		//#####IMPORTANT INITIALIZATIONS HERE#####
 		//########################################
+
+		int DATA[10][2][10][50];
+
+		// Manually set Dates
+		DATA[0][1][4][5] = 20201105;
+		DATA[1][1][4][5] = 20201105;
+		DATA[2][1][4][5] = 20201130;
+		DATA[3][1][4][5] = 20201129;
+		DATA[4][1][4][5] = 20201123;
+		DATA[5][1][4][5] = 20201128;
+		DATA[6][1][4][5] = 20201110;
+		DATA[7][1][4][5] = 20201120;
+		DATA[8][1][4][5] = 20201110;
+		DATA[9][1][4][5] = 20201111;
+
+		// Manually set the Data
+		DATA[0][0][4][5] = 101000;
+		DATA[1][0][4][5] = 105000;
+		DATA[2][0][4][5] = 208000;
+		DATA[3][0][4][5] = 309000;
+		DATA[4][0][4][5] = 303000;
+		DATA[5][0][4][5] = 505000;
+		DATA[6][0][4][5] = 602000;
+		DATA[7][0][4][5] = 403000;
+		DATA[8][0][4][5] = 507000;
+		DATA[9][0][4][5] = 209000;
+
+
 		const int SIZE = getDataSetSize();
-		int DATA[SIZE][2][10][50];
+		//int DATA[SIZE][2][10][50];
 		Analyser PROCESSOR(SIZE);
 		PROCESSOR.sortData(DATA);
 		//########################################
@@ -86,12 +70,63 @@ int main()
 		std::cout << "\nPlease enter what you would like to do." << std::endl
     	<< "0: Exit the program" << std::endl
     	<< "1: Update the data file" << std::endl
-    	<< "2: print a graph (WIP)" << std::endl;
+    	<< "2: print a graph (WIP)" << std::endl
+		<< "3: get averages\n";
+
     	cin >> a;
 		if(a == 0)
 			running = false;
-		else if(a == 1)
+		else if (a == 1)
+		{
 			updateData();
+			// updateData();
+			parseXML xml_obj;
+
+			std::ifstream stream1;
+			stream1.open("../data.cdc.gov/data.xml", ios::in);
+			std::ofstream stream2;
+			stream2.open("../data.cdc.gov/data.txt", std::ios::out);
+
+			xml_obj.parseXML_s(stream1, stream2, "<row");
+
+			std::cout << "Finished" << std::endl;
+			stream1.close();
+			stream2.close();
+
+			ifstream stream3;
+			stream3.open("../data.cdc.gov/data.txt", ios::in);
+			ofstream stream5;
+			stream5.open("../data.cdc.gov/data2.txt", ios::app);
+
+			int counter = 0;
+			while (!stream3.eof() && counter < 5000)
+			{
+				string data;
+				string data_ptr;
+
+				getline(stream3, data);
+
+				data_ptr = *xml_obj.parseXML_s(data);
+
+
+				for (int i = 0; i < 12; i++)
+				{
+					char aaa = data_ptr[i];
+					cout << aaa;
+					stream5 << aaa << "pie ";
+				}
+				stream5 << "\n";
+				if (counter % 1000 == 0)
+				{
+					cout << counter << "\n";
+				}
+
+				counter++;
+			}
+
+			std::cout << "Done" << std::endl;
+			stream5.close();
+		}
 /*		else if(a == 2)
 			graph();
 */
@@ -228,8 +263,7 @@ int main()
 	}
 
 
-	std::cout << "Done" << std::endl;
-	stream5.close();
+	
 
     return 0;
 
