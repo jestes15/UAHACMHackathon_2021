@@ -70,7 +70,7 @@ inline int updateData(void)
 		if (res != CURLE_OK)
 			cout << "ERROR: Update Failed!\n Could not find destination!\n";
 		else
-			cout << (unsigned long)chunk.size << "bytes retrived\n";
+			cout << (unsigned long)chunk.size << " bytes retrived\n";
 
 		fprintf(outFile, chunk.memory); //Print the website contents to the output file
 	

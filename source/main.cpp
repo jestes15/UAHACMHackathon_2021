@@ -44,9 +44,30 @@ int main()
 		stream5 << "\n";
 	}
 
+	bool running = true;
+    int a;
+
+	while (running)
+	{
+		std::cout << "\nPlease enter what you would like to do." << std::endl
+    	<< "0: Exit the program" << std::endl
+    	<< "1: Update the data file" << std::endl
+    	<< "2: print a graph (WIP)" << std::endl;
+    	cin >> a;
+		if(a == 0)
+			running = false;
+		else if(a == 1)
+			updateData();
+/*		else if(a == 2)
+			graph();
+*/
+		else
+			std::cout << "That is not a correct input, please try agian\n";
+	}
+
+
 	std::cout << "Done" << std::endl;
-    std::string a;
-    std::cin >> a;
+
 
     return 0;
 }
